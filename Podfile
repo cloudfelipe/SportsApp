@@ -21,6 +21,7 @@ def main_pods
 	pod 'SwiftLint'
 	pod 'TPKeyboardAvoiding'
 	pod 'SVProgressHUD'
+	pod "SnapKit"
 end
 
 target 'SportsApp' do

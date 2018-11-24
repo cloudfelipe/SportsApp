@@ -12,6 +12,30 @@
 		55C1BE3921A99FCB0074B14C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55C1BE3821A99FCB0074B14C /* Assets.xcassets */; };
 		55C1BE3C21A99FCB0074B14C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55C1BE3A21A99FCB0074B14C /* LaunchScreen.storyboard */; };
 		55C1BE4721A99FCB0074B14C /* SportsAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C1BE4621A99FCB0074B14C /* SportsAppTests.swift */; };
+		55C1BE5F21A9AAEC0074B14C /* Initial+Structures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C1BE5A21A9AAEC0074B14C /* Initial+Structures.swift */; };
+		55C1BE6021A9AAEC0074B14C /* Initial+Structures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C1BE5A21A9AAEC0074B14C /* Initial+Structures.swift */; };
+		55C1BE6121A9AAEC0074B14C /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C1BE5B21A9AAEC0074B14C /* InitialViewController.swift */; };
+		55C1BE6221A9AAEC0074B14C /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C1BE5B21A9AAEC0074B14C /* InitialViewController.swift */; };
+		55C1BE6521A9AAEC0074B14C /* InitialViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C1BE5D21A9AAEC0074B14C /* InitialViewModel.swift */; };
+		55C1BE6621A9AAEC0074B14C /* InitialViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C1BE5D21A9AAEC0074B14C /* InitialViewModel.swift */; };
+		55C1BE6721A9AAEC0074B14C /* InitialConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C1BE5E21A9AAEC0074B14C /* InitialConfigurator.swift */; };
+		55C1BE6821A9AAEC0074B14C /* InitialConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C1BE5E21A9AAEC0074B14C /* InitialConfigurator.swift */; };
+		55C1BE6A21A9AB420074B14C /* RxViewModelPorotocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C1BE6921A9AB420074B14C /* RxViewModelPorotocol.swift */; };
+		55C1BE6B21A9AB420074B14C /* RxViewModelPorotocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C1BE6921A9AB420074B14C /* RxViewModelPorotocol.swift */; };
+		55C1BE6D21A9ABD10074B14C /* InitialRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C1BE6C21A9ABD10074B14C /* InitialRouter.swift */; };
+		55C1BE6E21A9ABD10074B14C /* InitialRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C1BE6C21A9ABD10074B14C /* InitialRouter.swift */; };
+		55C1BE8121A9B1570074B14C /* SportListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C1BE8021A9B1570074B14C /* SportListTableViewCell.swift */; };
+		55C1BE8221A9B1570074B14C /* SportListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C1BE8021A9B1570074B14C /* SportListTableViewCell.swift */; };
+		55C1BE8421A9B5B50074B14C /* SportListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55C1BE8321A9B5B50074B14C /* SportListTableViewCell.xib */; };
+		55C1BE8521A9B5B50074B14C /* SportListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55C1BE8321A9B5B50074B14C /* SportListTableViewCell.xib */; };
+		55C1BE8F21A9B7110074B14C /* TeamList+Structures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C1BE8A21A9B7110074B14C /* TeamList+Structures.swift */; };
+		55C1BE9021A9B7110074B14C /* TeamList+Structures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C1BE8A21A9B7110074B14C /* TeamList+Structures.swift */; };
+		55C1BE9121A9B7110074B14C /* TeamListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C1BE8B21A9B7110074B14C /* TeamListViewController.swift */; };
+		55C1BE9221A9B7110074B14C /* TeamListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C1BE8B21A9B7110074B14C /* TeamListViewController.swift */; };
+		55C1BE9521A9B7110074B14C /* TeamListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C1BE8D21A9B7110074B14C /* TeamListViewModel.swift */; };
+		55C1BE9621A9B7110074B14C /* TeamListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C1BE8D21A9B7110074B14C /* TeamListViewModel.swift */; };
+		55C1BE9721A9B7110074B14C /* TeamListConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C1BE8E21A9B7110074B14C /* TeamListConfigurator.swift */; };
+		55C1BE9821A9B7110074B14C /* TeamListConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C1BE8E21A9B7110074B14C /* TeamListConfigurator.swift */; };
 		B314160567FD0733CED37EC0 /* Pods_SportsApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 487EE54CDBB46D87F50EEB9F /* Pods_SportsApp.framework */; };
 		CBC9A425456B831CFDB11339 /* Pods_SportsAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA5DB5E6635E13F48C8D4CF5 /* Pods_SportsAppTests.framework */; };
 /* End PBXBuildFile section */
@@ -39,6 +63,18 @@
 		55C1BE4621A99FCB0074B14C /* SportsAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsAppTests.swift; sourceTree = "<group>"; };
 		55C1BE4821A99FCB0074B14C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		55C1BE5821A9A6D00074B14C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		55C1BE5A21A9AAEC0074B14C /* Initial+Structures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Initial+Structures.swift"; sourceTree = "<group>"; };
+		55C1BE5B21A9AAEC0074B14C /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
+		55C1BE5D21A9AAEC0074B14C /* InitialViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewModel.swift; sourceTree = "<group>"; };
+		55C1BE5E21A9AAEC0074B14C /* InitialConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialConfigurator.swift; sourceTree = "<group>"; };
+		55C1BE6921A9AB420074B14C /* RxViewModelPorotocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxViewModelPorotocol.swift; sourceTree = "<group>"; };
+		55C1BE6C21A9ABD10074B14C /* InitialRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialRouter.swift; sourceTree = "<group>"; };
+		55C1BE8021A9B1570074B14C /* SportListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportListTableViewCell.swift; sourceTree = "<group>"; };
+		55C1BE8321A9B5B50074B14C /* SportListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SportListTableViewCell.xib; sourceTree = "<group>"; };
+		55C1BE8A21A9B7110074B14C /* TeamList+Structures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TeamList+Structures.swift"; sourceTree = "<group>"; };
+		55C1BE8B21A9B7110074B14C /* TeamListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListViewController.swift; sourceTree = "<group>"; };
+		55C1BE8D21A9B7110074B14C /* TeamListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListViewModel.swift; sourceTree = "<group>"; };
+		55C1BE8E21A9B7110074B14C /* TeamListConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListConfigurator.swift; sourceTree = "<group>"; };
 		A34D58DD751F1F52B2195606 /* Pods-SportsAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SportsAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SportsAppTests/Pods-SportsAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		BA5DB5E6635E13F48C8D4CF5 /* Pods_SportsAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SportsAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCCCA3601D095DACEBF4D56A /* Pods-SportsApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SportsApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-SportsApp/Pods-SportsApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -99,6 +135,7 @@
 		55C1BE3021A99FC90074B14C /* SportsApp */ = {
 			isa = PBXGroup;
 			children = (
+				55C1BE9921A9B8490074B14C /* Models */,
 				55C1BE5621A9A6AF0074B14C /* Storyboards */,
 				55C1BE5521A9A6A20074B14C /* Features */,
 				55C1BE5421A9A6940074B14C /* Views */,
@@ -125,6 +162,7 @@
 		55C1BE5121A9A6640074B14C /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				55C1BE6921A9AB420074B14C /* RxViewModelPorotocol.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -146,6 +184,8 @@
 		55C1BE5421A9A6940074B14C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				55C1BE8021A9B1570074B14C /* SportListTableViewCell.swift */,
+				55C1BE8321A9B5B50074B14C /* SportListTableViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -153,6 +193,8 @@
 		55C1BE5521A9A6A20074B14C /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				55C1BE8921A9B6F90074B14C /* TeamList */,
+				55C1BE6F21A9ACA20074B14C /* Initial */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -163,6 +205,36 @@
 				55C1BE3521A99FC90074B14C /* Main.storyboard */,
 			);
 			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		55C1BE6F21A9ACA20074B14C /* Initial */ = {
+			isa = PBXGroup;
+			children = (
+				55C1BE6C21A9ABD10074B14C /* InitialRouter.swift */,
+				55C1BE5A21A9AAEC0074B14C /* Initial+Structures.swift */,
+				55C1BE5B21A9AAEC0074B14C /* InitialViewController.swift */,
+				55C1BE5D21A9AAEC0074B14C /* InitialViewModel.swift */,
+				55C1BE5E21A9AAEC0074B14C /* InitialConfigurator.swift */,
+			);
+			path = Initial;
+			sourceTree = "<group>";
+		};
+		55C1BE8921A9B6F90074B14C /* TeamList */ = {
+			isa = PBXGroup;
+			children = (
+				55C1BE8A21A9B7110074B14C /* TeamList+Structures.swift */,
+				55C1BE8B21A9B7110074B14C /* TeamListViewController.swift */,
+				55C1BE8D21A9B7110074B14C /* TeamListViewModel.swift */,
+				55C1BE8E21A9B7110074B14C /* TeamListConfigurator.swift */,
+			);
+			path = TeamList;
+			sourceTree = "<group>";
+		};
+		55C1BE9921A9B8490074B14C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		B3AB12465220AC86A64B69D4 /* Frameworks */ = {
@@ -260,6 +332,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55C1BE8421A9B5B50074B14C /* SportListTableViewCell.xib in Resources */,
 				55C1BE3C21A99FCB0074B14C /* LaunchScreen.storyboard in Resources */,
 				55C1BE3921A99FCB0074B14C /* Assets.xcassets in Resources */,
 				55C1BE3721A99FC90074B14C /* Main.storyboard in Resources */,
@@ -270,6 +343,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55C1BE8521A9B5B50074B14C /* SportListTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,11 +355,7 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
-			);
-			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
@@ -374,6 +444,7 @@
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/TPKeyboardAvoiding/TPKeyboardAvoiding.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -386,6 +457,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TPKeyboardAvoiding.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -400,6 +472,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55C1BE6A21A9AB420074B14C /* RxViewModelPorotocol.swift in Sources */,
+				55C1BE9521A9B7110074B14C /* TeamListViewModel.swift in Sources */,
+				55C1BE9121A9B7110074B14C /* TeamListViewController.swift in Sources */,
+				55C1BE6121A9AAEC0074B14C /* InitialViewController.swift in Sources */,
+				55C1BE9721A9B7110074B14C /* TeamListConfigurator.swift in Sources */,
+				55C1BE6521A9AAEC0074B14C /* InitialViewModel.swift in Sources */,
+				55C1BE6721A9AAEC0074B14C /* InitialConfigurator.swift in Sources */,
+				55C1BE5F21A9AAEC0074B14C /* Initial+Structures.swift in Sources */,
+				55C1BE8F21A9B7110074B14C /* TeamList+Structures.swift in Sources */,
+				55C1BE6D21A9ABD10074B14C /* InitialRouter.swift in Sources */,
+				55C1BE8121A9B1570074B14C /* SportListTableViewCell.swift in Sources */,
 				55C1BE3221A99FC90074B14C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -408,6 +491,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55C1BE6B21A9AB420074B14C /* RxViewModelPorotocol.swift in Sources */,
+				55C1BE9621A9B7110074B14C /* TeamListViewModel.swift in Sources */,
+				55C1BE9221A9B7110074B14C /* TeamListViewController.swift in Sources */,
+				55C1BE6221A9AAEC0074B14C /* InitialViewController.swift in Sources */,
+				55C1BE9821A9B7110074B14C /* TeamListConfigurator.swift in Sources */,
+				55C1BE6621A9AAEC0074B14C /* InitialViewModel.swift in Sources */,
+				55C1BE6821A9AAEC0074B14C /* InitialConfigurator.swift in Sources */,
+				55C1BE6021A9AAEC0074B14C /* Initial+Structures.swift in Sources */,
+				55C1BE9021A9B7110074B14C /* TeamList+Structures.swift in Sources */,
+				55C1BE6E21A9ABD10074B14C /* InitialRouter.swift in Sources */,
+				55C1BE8221A9B1570074B14C /* SportListTableViewCell.swift in Sources */,
 				55C1BE4721A99FCB0074B14C /* SportsAppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
