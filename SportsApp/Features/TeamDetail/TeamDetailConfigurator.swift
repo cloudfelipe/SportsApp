@@ -33,7 +33,7 @@ class TeamDetailConfigurator {
     
     private class func createDependencies() throws -> TeamDetailViewModel.InputDependencies {
         let dependencies =
-            TeamDetailViewModel.InputDependencies()
+            TeamDetailViewModel.InputDependencies(teamServices: TeamServices())
         return dependencies
     }
     

@@ -88,6 +88,12 @@ class TeamDetailViewController: UIViewController {
             }
             .disposed(by: bag)
         
+        output.nextEvents
+            .bind(to: nextEventsTableView.rx.items(cellIdentifier: "Cell")) { (index, item, cell) in
+                cell.textLabel?.text = item.title
+            }
+            .disposed(by: bag)
+        
         output.viewInfo
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [unowned self] (viewInfo) in
@@ -100,6 +106,7 @@ class TeamDetailViewController: UIViewController {
         descriptionLabel.textAlignment = .center
         
         socialTableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        nextEventsTableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
     }
     
     private func updateViewInfo(with model: TeamDetailViewInfo?) {

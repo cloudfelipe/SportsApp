@@ -23,11 +23,16 @@ protocol TeamDetailViewOutput {
     func configure(input: TeamDetailViewModel.Input) -> TeamDetailViewModel.Output
 }
 
+struct NextEvent {
+    let title: String?
+    let matchDate: String?
+}
+
 class TeamDetailViewModel: RxViewModelType, RxViewModelModuleType, TeamDetailViewOutput {
     
     // MARK: In/Out struct
     struct InputDependencies {
-        
+        let teamServices: TeamServicesInput
     }
     
     struct Input {
@@ -39,6 +44,7 @@ class TeamDetailViewModel: RxViewModelType, RxViewModelModuleType, TeamDetailVie
         let title: Observable<String>
         let state: Observable<ModelState>
         let viewInfo: Observable<TeamDetailViewInfo?>
+        let nextEvents: Observable<[NextEvent]>
         let socialNetworks: Observable<[SocialNetwork]>
     }
     
@@ -52,6 +58,7 @@ class TeamDetailViewModel: RxViewModelType, RxViewModelModuleType, TeamDetailVie
     
     private let viewInfoUpdated = BehaviorRelay<TeamDetailViewInfo?>(value: nil)
     private let availableSocialNetworks = BehaviorRelay<[SocialNetwork]>(value: [])
+    private let nextEvents = BehaviorRelay<[Event]>(value: [])
     // MARK: Observables
     private let title = Observable.just("TeamDetail")
     private let outputModuleAction = PublishSubject<OutputModuleActionType>()
@@ -62,6 +69,15 @@ class TeamDetailViewModel: RxViewModelType, RxViewModelModuleType, TeamDetailVie
         self.dep = dependencies
         self.moduleInputData = moduleInputData
         self.prepareViewInfo(with: moduleInputData.team)
+        
+        guard let id = moduleInputData.team.teamId else { return }
+        
+        //get events
+        dependencies.teamServices.getNextFiveEvents(of: id) { (events, error) in
+            if events != nil {
+                self.nextEvents.accept(events!)
+            }
+        }
     }
     
     // MARK: - TeamDetailViewOutput
@@ -82,6 +98,7 @@ class TeamDetailViewModel: RxViewModelType, RxViewModelModuleType, TeamDetailVie
             title: title.asObservable(),
             state: modelState.state.asObservable(),
             viewInfo: viewInfoUpdated.asObservable(),
+            nextEvents: nextEvents.map { self.prepareNextEvents(with: $0) }.asObservable(),
             socialNetworks: availableSocialNetworks.asObservable()
         )
     }
@@ -115,10 +132,19 @@ extension TeamDetailViewModel {
                                       description: team.teamDescriptionEN,
                                       stadiumName: team.stadium,
                                       stadiumImageUrl: team.stadiumThumb,
-                                      jerse: "Jerse",
+                                      jerse: "Current Jerse",
                                       jerseImageUrl: team.jerse)
         self.viewInfoUpdated.accept(info)
         
         self.availableSocialNetworks.accept(team.socialNetworks)
+    }
+    
+    private func prepareNextEvents(with events: [Event]) -> [NextEvent] {
+        let wrapper = events.map { (event) -> NextEvent in
+            let nextEvent = NextEvent(title: event.name!,
+                                      matchDate: Date().string())
+            return nextEvent
+        }
+        return wrapper
     }
 }

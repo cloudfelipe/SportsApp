@@ -10,7 +10,8 @@ import Foundation
 import Moya
 
 public enum TeamServicesAPI {
-    case teams(leageId: String)
+    case teams(leagueId: String)
+    case nextFiveEvents(teamId: String)
 }
 
 extension TeamServicesAPI: TargetType {
@@ -22,12 +23,14 @@ extension TeamServicesAPI: TargetType {
         switch self {
         case .teams:
             return "lookup_all_teams.php"
+        case .nextFiveEvents:
+            return "eventsnext.php"
         }
     }
     
     public var method: Moya.Method {
         switch self {
-        case .teams:
+        case .teams, .nextFiveEvents:
             return .get
         }
     }
@@ -38,8 +41,8 @@ extension TeamServicesAPI: TargetType {
     
     public var task: Task {
         switch self {
-        case .teams(let leagueId):
-            return .requestParameters(parameters: ["id": leagueId], encoding: URLEncoding.queryString)
+        case .teams(let id), .nextFiveEvents(let id):
+            return .requestParameters(parameters: ["id": id], encoding: URLEncoding.queryString)
         }
     }
     

@@ -32,6 +32,9 @@ class TeamListViewController: UIViewController {
         let button = UIBarButtonItem(barButtonSystemItem: .search, target: nil, action: nil)
         return button
     }()
+    
+    let searchController = UISearchController(searchResultsController: nil)
+    
     // IBOutlet & UI
     
     // MARK: - View lifecycle
@@ -46,6 +49,7 @@ class TeamListViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewAppearState.onNext(.willAppear)
+        self.navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -56,6 +60,7 @@ class TeamListViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         viewAppearState.onNext(.willDisappear)
+        self.navigationController?.navigationBar.prefersLargeTitles = false
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -93,6 +98,16 @@ class TeamListViewController: UIViewController {
         self.view.addSubview(tableView)
         self.navigationItem.rightBarButtonItem = self.searchButton
         self.navigationController?.navigationBar.prefersLargeTitles = true
+        
+//        searchController.searchResultsUpdater = self
+//        searchController.obscuresBackgroundDuringPresentation = false
+//        searchController.searchBar.placeholder = "Search Candies"
+//        navigationItem.searchController = searchController
+//        definesPresentationContext = true
+//        // Setup the Scope Bar
+//        searchController.searchBar.scopeButtonTitles = ["All", "Chocolate", "Hard", "Other"]
+////        searchController.searchBar.delegate = self
+        
         self.prepareConstraints()
     }
     

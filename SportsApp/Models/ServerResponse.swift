@@ -15,16 +15,7 @@ protocol ObjectDTO {
 
 class ServerResponse: Mappable {
     var teams: [Team]?
-    
-    /*
-    //Next two properties was created because for this Mapper is impossible
-    //set in a generic kind object an arrar or single object (Backend response use only one property)
-    var data: T? //Read this property if a single object is expected.
-    var dataList: [T]? //Read this property if a array of object is expected.
-    var messageCode: Int?
-    
-    var errors: [ResponseError<T>]?
- */
+    var events: [Event]?
     
     init() {
         
@@ -37,11 +28,7 @@ class ServerResponse: Mappable {
     }
     
     func mapping(map: Map) {
-//        message     <- map["message"]
-//        data        <- map["data"]
-//        dataList    <- map["data"]
-//        errors      <- map["errors"]
-//        messageCode <- map["messageCode"]
         teams <- map["teams"]
+        events <- map["events"]
     }
 }

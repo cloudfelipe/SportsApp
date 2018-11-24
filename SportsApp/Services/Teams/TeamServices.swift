@@ -13,6 +13,7 @@ import RxSwift
 
 protocol TeamServicesInput {
     func getTeams(by league: String, completion: @escaping (_ teams: [Team]?, _ error: NSError?) -> Void)
+    func getNextFiveEvents(of teamId: String, completion: @escaping (_ events: [Event]?, _ error: NSError?) -> Void)
 }
 
 class TeamServices {
@@ -23,7 +24,7 @@ class TeamServices {
 extension TeamServices: TeamServicesInput {
     public func getTeams(by league: String, completion: @escaping ([Team]?, NSError?) -> Void) {
         provider.rx
-            .request(.teams(leageId: league))
+            .request(.teams(leagueId: league))
             .mapObject(ServerResponse.self)
             .subscribe { (event) in
                 switch event {
@@ -33,5 +34,19 @@ extension TeamServices: TeamServicesInput {
                     completion(nil, error as NSError)
                 }
         }.disposed(by: disposeBag)
+    }
+    
+    func getNextFiveEvents(of teamId: String, completion: @escaping ([Event]?, NSError?) -> Void) {
+        provider.rx
+            .request(.nextFiveEvents(teamId: teamId))
+            .mapObject(ServerResponse.self)
+            .subscribe { (event) in
+                switch event {
+                case .success(let response):
+                    completion(response.events, nil)
+                case .error(let error):
+                    completion(nil, error as NSError)
+                }
+            }.disposed(by: disposeBag)
     }
 }
