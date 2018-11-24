@@ -16,6 +16,8 @@ protocol TeamListViewOutput {
 
 class TeamListViewModel: RxViewModelType, RxViewModelModuleType, TeamListViewOutput {
     
+    typealias TeamWrapper = TeamListTableViewCellModel
+    
     // MARK: In/Out struct
     struct InputDependencies {
         
@@ -28,6 +30,7 @@ class TeamListViewModel: RxViewModelType, RxViewModelModuleType, TeamListViewOut
     struct Output {
         let title: Observable<String>
         let state: Observable<ModelState>
+        let teamsWrapper: Observable<[TeamWrapper]>
     }
     
     // MARK: Dependencies
@@ -42,12 +45,26 @@ class TeamListViewModel: RxViewModelType, RxViewModelModuleType, TeamListViewOut
     private let title = Observable.just("TeamList")
     private let outputModuleAction = PublishSubject<OutputModuleActionType>()
     
-//    private let teams: Variable<>
+    private let teams = BehaviorRelay<[Team]>(value: [])
+    
     // MARK: - initializer
     
     init(dependencies: InputDependencies, moduleInputData: ModuleInputData) {
         self.dep = dependencies
         self.moduleInputData = moduleInputData
+        
+        //Samples teams
+        let team1 = Team()
+        team1.name = "Atletico Nacional"
+        team1.stadium = "Atanacio Girardot"
+        team1.badge = ""
+        
+        let team2 = Team()
+        team2.name = "Millonarios"
+        team2.stadium = "El Campin"
+        team2.badge = ""
+        
+        self.teams.accept([team1, team2])
     }
     
     // MARK: - TeamListViewOutput
@@ -58,10 +75,12 @@ class TeamListViewModel: RxViewModelType, RxViewModelModuleType, TeamListViewOut
             // .didLoad and etc
         }).disposed(by: bag)
         
+        let teamWrappers = teams.map { self.prepareWrappers(for: $0) }.asObservable()
         // Configure output
         return Output(
             title: title.asObservable(),
-            state: modelState.state.asObservable()
+            state: modelState.state.asObservable(),
+            teamsWrapper: teamWrappers
         )
     }
     
@@ -80,5 +99,16 @@ class TeamListViewModel: RxViewModelType, RxViewModelModuleType, TeamListViewOut
     
     deinit {
         print("-- TeamListViewModel dead")
+    }
+}
+
+extension TeamListViewModel {
+    private func prepareWrappers(for teams: [Team]) -> [TeamWrapper] {
+        return teams.map { (team) -> TeamWrapper in
+            let wrapper = TeamWrapper(teamName: team.name ?? "N/A",
+                                      teamStadium: team.stadium ?? "N/A",
+                                      teamBadge: team.badge ?? "N/A")
+            return wrapper
+        }
     }
 }

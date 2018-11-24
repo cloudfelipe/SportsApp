@@ -1,5 +1,5 @@
 //
-//  SportListTableViewCell.swift
+//  TeamListTableViewCell.swift
 //  SportsApp
 //
 //  Created by Felipe Correa on 11/24/18.
@@ -8,14 +8,19 @@
 
 import UIKit
 
-struct SportListTableViewCellModel {
+struct TeamListTableViewCellModel {
     let teamName: String
     let teamStadium: String
     let teamBadge: String
 }
 
-final class SportListTableViewCell: UITableViewCell {
+final class TeamListTableViewCell: UITableViewCell {
     init(reuseIdentifier: String?) {
+        super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
+        customInit()
+    }
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
         customInit()
     }
@@ -30,7 +35,7 @@ final class SportListTableViewCell: UITableViewCell {
         
     }
     
-    func setupWith(model: SportListTableViewCellModel) {
+    func setupWith(model: TeamListTableViewCellModel) {
         self.textLabel?.text = model.teamName
         self.detailTextLabel?.text = model.teamStadium
     }

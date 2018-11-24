@@ -25,6 +25,7 @@ class TeamListViewController: UIViewController {
     private let viewAppearState = PublishSubject<ViewAppearState>()
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: CGRect.zero, style: .plain)
+        tableView.register(TeamListTableViewCell.self, forCellReuseIdentifier: "Cell")
         return tableView
     }()
     private lazy var searchButton: UIBarButtonItem = {
@@ -79,6 +80,12 @@ class TeamListViewController: UIViewController {
         output.state.subscribe(onNext: { [weak self] state in
             // state handler
         }).disposed(by: bag)
+        
+        output.teamsWrapper
+            .bind(to: tableView.rx.items(cellIdentifier: "Cell", cellType: TeamListTableViewCell.self)) { (index, item, cell) in
+                cell.setupWith(model: item)
+            }
+            .disposed(by: bag)
     }
     
     private func configureUI() {
