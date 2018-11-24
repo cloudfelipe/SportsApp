@@ -31,7 +31,7 @@ class TeamDetailViewController: UIViewController {
     @IBOutlet weak var jerseyImageView: UIImageView!
     @IBOutlet weak var jerseyNameLabel: UILabel!
     
-    @IBOutlet weak var nextEventsTableView: UITableView!
+    @IBOutlet weak var nextEventsTableView: BaseTableView!
     @IBOutlet weak var socialTableView: UITableView!
     
     // MARK: - View lifecycle
@@ -78,9 +78,14 @@ class TeamDetailViewController: UIViewController {
             self?.navigationItem.title = str
         }).disposed(by: bag)
         
-//        output.state.subscribe(onNext: { [weak self] state in
-//            // state handler
-//        }).disposed(by: bag)
+        output.state.subscribe(onNext: { [unowned self] state in
+            switch state {
+            case .networkActivity:
+                self.nextEventsTableView.isLoadingContent = true
+            default:
+                self.nextEventsTableView.isLoadingContent = false
+            }
+        }).disposed(by: bag)
         
         output.socialNetworks
             .bind(to: socialTableView.rx.items(cellIdentifier: "Cell")) { (index, item, cell) in

@@ -43,6 +43,7 @@ class BaseRouter {
         var ctrlToShow = viewController //The controller to be shown
         if navigation { //if is needed to create a nav ctrl, enters here
             let navCtrl = UINavigationController(rootViewController: viewController)
+            navCtrl.navigationBar.isTranslucent = false
             ctrlToShow = navCtrl
         }
         DispatchQueue.main.async {

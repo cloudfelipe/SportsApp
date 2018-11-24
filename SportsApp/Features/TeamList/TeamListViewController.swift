@@ -10,6 +10,35 @@ import UIKit
 import RxSwift
 import RxCocoa
 import SnapKit
+import SVProgressHUD
+
+enum Leagues: Int, CaseIterable {
+    case laLiga = 0
+    case premier = 1
+    case bundesliga = 2
+    
+    var identifier: String {
+        switch self {
+        case .premier:
+            return "4328"
+        case .bundesliga:
+            return "4331"
+        case .laLiga:
+            return "4335"
+        }
+    }
+    
+    var name: String {
+        switch self {
+        case .premier:
+            return "Premier"
+        case .bundesliga:
+            return "Bundesliga"
+        case .laLiga:
+            return "La Liga"
+        }
+    }
+}
 
 class TeamListViewController: UIViewController {
     
@@ -23,8 +52,8 @@ class TeamListViewController: UIViewController {
     
     // Private
     private let viewAppearState = PublishSubject<ViewAppearState>()
-    private lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: CGRect.zero, style: .plain)
+    private lazy var tableView: BaseTableView = {
+        let tableView = BaseTableView(frame: CGRect.zero, style: .plain)
         tableView.register(TeamListTableViewCell.self, forCellReuseIdentifier: "Cell")
         return tableView
     }()
@@ -34,6 +63,11 @@ class TeamListViewController: UIViewController {
     }()
     
     let searchController = UISearchController(searchResultsController: nil)
+    
+    private lazy var segmentedControl: UISegmentedControl = {
+        let segment = UISegmentedControl(items: Leagues.allCases.map { $0.name } )
+        return segment
+    }()
     
     // IBOutlet & UI
     
@@ -49,7 +83,7 @@ class TeamListViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewAppearState.onNext(.willAppear)
-        self.navigationController?.navigationBar.prefersLargeTitles = true
+//        self.navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -60,7 +94,7 @@ class TeamListViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         viewAppearState.onNext(.willDisappear)
-        self.navigationController?.navigationBar.prefersLargeTitles = false
+//        self.navigationController?.navigationBar.prefersLargeTitles = false
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -75,46 +109,61 @@ class TeamListViewController: UIViewController {
             return
         }
         
+        tableView.rx.setDelegate(self).disposed(by: bag)
+        
         let input = TeamListViewModel.Input(appearState: viewAppearState,
-                                            teamDidSelectedAtIndex: tableView.rx.itemSelected.asDriver())
+                                            teamDidSelectedAtIndex: tableView.rx.itemSelected.asDriver(),
+                                            segmentedItemSelectedAtIndex: segmentedControl.rx.selectedSegmentIndex.asDriver())
         let output = model.configure(input: input)
         
         output.title.subscribe(onNext: { [weak self] str in
             self?.navigationItem.title = str
         }).disposed(by: bag)
         
-        output.state.subscribe(onNext: { [weak self] state in
-            // state handler
+        output.state.subscribe(onNext: { [unowned self] state in
+            switch state {
+            case .networkActivity:
+                self.tableView.isLoadingContent = true
+            case .error(let error):
+                SVProgressHUD.showError(withStatus: error.localizedDescription)
+                self.tableView.isLoadingContent = false
+            default:
+                self.tableView.isLoadingContent = false
+            }
         }).disposed(by: bag)
-        
+
         output.teamsWrapper
             .bind(to: tableView.rx.items(cellIdentifier: "Cell", cellType: TeamListTableViewCell.self)) { (index, item, cell) in
                 cell.setupWith(model: item)
             }
             .disposed(by: bag)
+        
+        
     }
     
     private func configureUI() {
+        self.view.backgroundColor = .white
         self.view.addSubview(tableView)
-        self.navigationItem.rightBarButtonItem = self.searchButton
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-        
-//        searchController.searchResultsUpdater = self
-//        searchController.obscuresBackgroundDuringPresentation = false
-//        searchController.searchBar.placeholder = "Search Candies"
-//        navigationItem.searchController = searchController
-//        definesPresentationContext = true
-//        // Setup the Scope Bar
-//        searchController.searchBar.scopeButtonTitles = ["All", "Chocolate", "Hard", "Other"]
-////        searchController.searchBar.delegate = self
-        
+        self.view.addSubview(segmentedControl)
+        segmentedControl.selectedSegmentIndex = 0
         self.prepareConstraints()
     }
     
     /// Setup all constraints for all views
     private func prepareConstraints() {
+        
+        segmentedControl.snp.makeConstraints { (maker) in
+            maker.leading.equalToSuperview()
+            maker.top.equalToSuperview()
+            maker.trailing.equalToSuperview()
+            maker.height.equalTo(50.0)
+        }
+        
         tableView.snp.makeConstraints { (maker) in
-            maker.edges.equalToSuperview()
+            maker.leading.equalToSuperview()
+            maker.bottom.equalToSuperview()
+            maker.trailing.equalToSuperview()
+            maker.top.equalTo(segmentedControl.snp.bottom).offset(5.0)
         }
     }
     
@@ -122,5 +171,11 @@ class TeamListViewController: UIViewController {
     
     deinit {
         print("TeamListViewController deinit")
+    }
+}
+
+extension TeamListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

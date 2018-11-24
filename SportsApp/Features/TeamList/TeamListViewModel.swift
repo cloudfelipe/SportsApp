@@ -30,6 +30,7 @@ class TeamListViewModel: RxViewModelType, RxViewModelModuleType, TeamListViewOut
     struct Input {
         let appearState: Observable<ViewAppearState>
         let teamDidSelectedAtIndex: Driver<IndexPath>
+        let segmentedItemSelectedAtIndex: Driver<Int>
     }
     
     struct Output {
@@ -58,16 +59,7 @@ class TeamListViewModel: RxViewModelType, RxViewModelModuleType, TeamListViewOut
         self.dep = dependencies
         self.moduleInputData = moduleInputData
         
-        dependencies.teamServices.getTeams(by: "4335") { (list, error) in
-            if error != nil {
-                print("Error getting teams: Reason \(error!.localizedDescription)")
-                return
-            }
-
-            if let list = list {
-                self.teams.accept(list)
-            }
-        }
+        
     }
     
     // MARK: - TeamListViewOutput
@@ -81,6 +73,13 @@ class TeamListViewModel: RxViewModelType, RxViewModelModuleType, TeamListViewOut
         input.teamDidSelectedAtIndex
             .drive(onNext: { [unowned self] (indexPath) in
                 self.showTeamDetailAt(index: indexPath)
+            }).disposed(by: bag)
+        
+        input.segmentedItemSelectedAtIndex
+            .drive(onNext: { (index) in
+                if let league = Leagues.init(rawValue: index) {
+                    self.getTeamsFor(league: league)
+                }
             }).disposed(by: bag)
         
         let teamWrappers = teams.map { self.prepareWrappers(for: $0) }.asObservable()
@@ -111,6 +110,28 @@ class TeamListViewModel: RxViewModelType, RxViewModelModuleType, TeamListViewOut
 }
 
 extension TeamListViewModel {
+    
+    private func getTeamsFor(league: Leagues) {
+        //Clean previous getted teams
+        self.teams.accept([])
+        //Inform that a request is running
+        self.modelState.change(state: .networkActivity)
+        dep.teamServices.getTeams(by: league.identifier) { (list, error) in
+            if error != nil {
+                self.modelState.show(error: error!)
+                print("Error getting teams: Reason \(error!.localizedDescription)")
+                return
+            }
+            
+            if let list = list {
+                self.teams.accept(list)
+                self.modelState.change(state: .normal)
+            } else {
+                self.modelState.change(state: .empty)
+            }
+        }
+    }
+    
     private func prepareWrappers(for teams: [Team]) -> [TeamWrapper] {
         return teams.map { (team) -> TeamWrapper in
             let wrapper = TeamWrapper(teamName: team.name ?? "N/A",
