@@ -20,7 +20,7 @@ class TeamListViewModel: RxViewModelType, RxViewModelModuleType, TeamListViewOut
     
     // MARK: In/Out struct
     struct InputDependencies {
-        
+        let teamServices: TeamServicesInput
     }
     
     struct Input {
@@ -53,6 +53,7 @@ class TeamListViewModel: RxViewModelType, RxViewModelModuleType, TeamListViewOut
         self.dep = dependencies
         self.moduleInputData = moduleInputData
         
+        /*
         //Samples teams
         let team1 = Team()
         team1.name = "Atletico Nacional"
@@ -65,6 +66,18 @@ class TeamListViewModel: RxViewModelType, RxViewModelModuleType, TeamListViewOut
         team2.badge = ""
         
         self.teams.accept([team1, team2])
+         */
+        
+        dependencies.teamServices.getTeams(by: "4335") { (list, error) in
+            if error != nil {
+                print("Error getting teams: Reason \(error!.localizedDescription)")
+                return
+            }
+            
+            if let list = list {
+                self.teams.accept(list)
+            }
+        }
     }
     
     // MARK: - TeamListViewOutput

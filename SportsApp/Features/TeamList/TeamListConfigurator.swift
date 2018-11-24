@@ -32,8 +32,8 @@ class TeamListConfigurator {
     }
     
     private class func createDependencies() throws -> TeamListViewModel.InputDependencies {
-        let dependencies =
-            TeamListViewModel.InputDependencies()
+        let teamServices = TeamServices()
+        let dependencies = TeamListViewModel.InputDependencies(teamServices: teamServices)
         return dependencies
     }
     

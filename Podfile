@@ -6,16 +6,16 @@ def testing_pods
     pod 'Nimble'
     # pod 'Swinject'
     # pod 'SwinjectStoryboard'
-    pod 'ObjectMapper', '~> 3.4'
+    pod 'ObjectMapper', '~> 3.3'
     pod 'RxBlocking', '~> 4.0'
     pod 'RxTest',     '~> 4.0'
 end
 
 def main_pods 
-	pod 'ObjectMapper', '~> 3.4'
+	pod 'ObjectMapper', '~> 3.3'
 	pod 'Alamofire'
-	pod 'Moya', '~> 12.0'
-	# pod 'Moya-ObjectMapper'
+	pod 'Moya/RxSwift'
+	pod 'Moya-ObjectMapper/RxSwift'
 	pod 'RxSwift',    '~> 4.0'
 	pod 'RxCocoa',    '~> 4.0'
 	pod 'SwiftLint'

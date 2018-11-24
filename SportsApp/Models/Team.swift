@@ -24,9 +24,9 @@ final class Team: Mappable {
     }
     
     func mapping(map: Map) {
-        name <- map["name"]
-        stadium <- map["stadium"]
-        id <- map["arrangementId"]
-        badge <- map["badge"]
+        name <- map["strTeam"]
+        stadium <- map["strStadium"]
+        id <- map["idTeam"]
+        badge <- map["strTeamBadge"]
     }
 }
