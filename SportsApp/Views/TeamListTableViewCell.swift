@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import AlamofireImage
 
 struct TeamListTableViewCellModel {
     let teamName: String
@@ -32,11 +34,21 @@ final class TeamListTableViewCell: UITableViewCell {
     
     /// Method to do a custom setup
     private func customInit() {
-        
+        self.accessoryType = .disclosureIndicator
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        if let imageView = imageView {
+            imageView.layer.cornerRadius = imageView.frame.height / 2
+        }
     }
     
     func setupWith(model: TeamListTableViewCellModel) {
         self.textLabel?.text = model.teamName
         self.detailTextLabel?.text = model.teamStadium
+        //TODO: URL unwrapping
+        self.imageView?.af_setImage(withURL: URL(string: model.teamBadge)!,
+                                    placeholderImage: UIImage(named: "template_icon"))
     }
 }

@@ -16,6 +16,7 @@ def main_pods
 	pod 'Alamofire'
 	pod 'Moya/RxSwift'
 	pod 'Moya-ObjectMapper/RxSwift'
+	pod 'AlamofireImage', '~> 3.4'
 	pod 'RxSwift',    '~> 4.0'
 	pod 'RxCocoa',    '~> 4.0'
 	pod 'SwiftLint'

@@ -91,6 +91,7 @@ class TeamListViewController: UIViewController {
     private func configureUI() {
         self.view.addSubview(tableView)
         self.navigationItem.rightBarButtonItem = self.searchButton
+        self.navigationController?.navigationBar.prefersLargeTitles = true
         self.prepareConstraints()
     }
     

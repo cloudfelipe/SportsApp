@@ -10,6 +10,9 @@ import Foundation
 import RxSwift
 import RxCocoa
 
+import AlamofireImage
+import Alamofire
+
 protocol TeamListViewOutput {
     func configure(input: TeamListViewModel.Input) -> TeamListViewModel.Output
 }
@@ -67,16 +70,27 @@ class TeamListViewModel: RxViewModelType, RxViewModelModuleType, TeamListViewOut
         
         self.teams.accept([team1, team2])
          */
-        
+
+//        setImage(string: "https://cdn.applypixels.com/app/uploads/2016/04/template_android_icon.png")
         dependencies.teamServices.getTeams(by: "4335") { (list, error) in
             if error != nil {
                 print("Error getting teams: Reason \(error!.localizedDescription)")
                 return
             }
-            
+
             if let list = list {
                 self.teams.accept(list)
             }
+        }
+    }
+    
+    private func setImage(string: String) {
+        Alamofire.request(URL(string: string)!, method: .get).response { response in
+            guard let image = UIImage(data:response.data!) else {
+                // Handle error
+                return
+            }
+            print("image!")
         }
     }
     
