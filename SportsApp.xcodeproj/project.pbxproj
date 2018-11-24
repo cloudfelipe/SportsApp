@@ -44,6 +44,22 @@
 		55C1BEA421A9C3310074B14C /* TeamServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C1BEA221A9C3310074B14C /* TeamServices.swift */; };
 		55C1BEA621A9CB190074B14C /* ServerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C1BEA521A9CB190074B14C /* ServerResponse.swift */; };
 		55C1BEA721A9CB190074B14C /* ServerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C1BEA521A9CB190074B14C /* ServerResponse.swift */; };
+		55C1BEAF21A9D5EE0074B14C /* TeamDetail+Structures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C1BEAA21A9D5EE0074B14C /* TeamDetail+Structures.swift */; };
+		55C1BEB021A9D5EE0074B14C /* TeamDetail+Structures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C1BEAA21A9D5EE0074B14C /* TeamDetail+Structures.swift */; };
+		55C1BEB121A9D5EE0074B14C /* TeamDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C1BEAB21A9D5EE0074B14C /* TeamDetailViewController.swift */; };
+		55C1BEB221A9D5EE0074B14C /* TeamDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C1BEAB21A9D5EE0074B14C /* TeamDetailViewController.swift */; };
+		55C1BEB521A9D5EE0074B14C /* TeamDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C1BEAD21A9D5EE0074B14C /* TeamDetailViewModel.swift */; };
+		55C1BEB621A9D5EE0074B14C /* TeamDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C1BEAD21A9D5EE0074B14C /* TeamDetailViewModel.swift */; };
+		55C1BEB721A9D5EE0074B14C /* TeamDetailConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C1BEAE21A9D5EE0074B14C /* TeamDetailConfigurator.swift */; };
+		55C1BEB821A9D5EE0074B14C /* TeamDetailConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C1BEAE21A9D5EE0074B14C /* TeamDetailConfigurator.swift */; };
+		55C1BEBA21A9DC960074B14C /* Storyboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C1BEB921A9DC960074B14C /* Storyboard+Extension.swift */; };
+		55C1BEBB21A9DC960074B14C /* Storyboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C1BEB921A9DC960074B14C /* Storyboard+Extension.swift */; };
+		55C1BEBD21A9DCBD0074B14C /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C1BEBC21A9DCBD0074B14C /* UIViewController+Extension.swift */; };
+		55C1BEBE21A9DCBD0074B14C /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C1BEBC21A9DCBD0074B14C /* UIViewController+Extension.swift */; };
+		55C1BEC021A9DCF90074B14C /* TeamListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C1BEBF21A9DCF90074B14C /* TeamListRouter.swift */; };
+		55C1BEC121A9DCF90074B14C /* TeamListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C1BEBF21A9DCF90074B14C /* TeamListRouter.swift */; };
+		55C1BEC321A9DDB10074B14C /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C1BEC221A9DDB10074B14C /* BaseRouter.swift */; };
+		55C1BEC421A9DDB10074B14C /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C1BEC221A9DDB10074B14C /* BaseRouter.swift */; };
 		B314160567FD0733CED37EC0 /* Pods_SportsApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 487EE54CDBB46D87F50EEB9F /* Pods_SportsApp.framework */; };
 		CBC9A425456B831CFDB11339 /* Pods_SportsAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA5DB5E6635E13F48C8D4CF5 /* Pods_SportsAppTests.framework */; };
 /* End PBXBuildFile section */
@@ -87,6 +103,14 @@
 		55C1BE9F21A9BFB00074B14C /* TeamServicesAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamServicesAPI.swift; sourceTree = "<group>"; };
 		55C1BEA221A9C3310074B14C /* TeamServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamServices.swift; sourceTree = "<group>"; };
 		55C1BEA521A9CB190074B14C /* ServerResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerResponse.swift; sourceTree = "<group>"; };
+		55C1BEAA21A9D5EE0074B14C /* TeamDetail+Structures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TeamDetail+Structures.swift"; sourceTree = "<group>"; };
+		55C1BEAB21A9D5EE0074B14C /* TeamDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDetailViewController.swift; sourceTree = "<group>"; };
+		55C1BEAD21A9D5EE0074B14C /* TeamDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDetailViewModel.swift; sourceTree = "<group>"; };
+		55C1BEAE21A9D5EE0074B14C /* TeamDetailConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDetailConfigurator.swift; sourceTree = "<group>"; };
+		55C1BEB921A9DC960074B14C /* Storyboard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Storyboard+Extension.swift"; sourceTree = "<group>"; };
+		55C1BEBC21A9DCBD0074B14C /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		55C1BEBF21A9DCF90074B14C /* TeamListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListRouter.swift; sourceTree = "<group>"; };
+		55C1BEC221A9DDB10074B14C /* BaseRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRouter.swift; sourceTree = "<group>"; };
 		A34D58DD751F1F52B2195606 /* Pods-SportsAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SportsAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SportsAppTests/Pods-SportsAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		BA5DB5E6635E13F48C8D4CF5 /* Pods_SportsAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SportsAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCCCA3601D095DACEBF4D56A /* Pods-SportsApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SportsApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-SportsApp/Pods-SportsApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -176,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				55C1BE6921A9AB420074B14C /* RxViewModelPorotocol.swift */,
+				55C1BEC221A9DDB10074B14C /* BaseRouter.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -190,6 +215,8 @@
 		55C1BE5321A9A67F0074B14C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				55C1BEB921A9DC960074B14C /* Storyboard+Extension.swift */,
+				55C1BEBC21A9DCBD0074B14C /* UIViewController+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -206,6 +233,7 @@
 		55C1BE5521A9A6A20074B14C /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				55C1BEA921A9D5D30074B14C /* TeamDetail */,
 				55C1BE8921A9B6F90074B14C /* TeamList */,
 				55C1BE6F21A9ACA20074B14C /* Initial */,
 			);
@@ -235,6 +263,7 @@
 		55C1BE8921A9B6F90074B14C /* TeamList */ = {
 			isa = PBXGroup;
 			children = (
+				55C1BEBF21A9DCF90074B14C /* TeamListRouter.swift */,
 				55C1BE8A21A9B7110074B14C /* TeamList+Structures.swift */,
 				55C1BE8B21A9B7110074B14C /* TeamListViewController.swift */,
 				55C1BE8D21A9B7110074B14C /* TeamListViewModel.swift */,
@@ -267,6 +296,17 @@
 				55C1BEA221A9C3310074B14C /* TeamServices.swift */,
 			);
 			path = Teams;
+			sourceTree = "<group>";
+		};
+		55C1BEA921A9D5D30074B14C /* TeamDetail */ = {
+			isa = PBXGroup;
+			children = (
+				55C1BEAA21A9D5EE0074B14C /* TeamDetail+Structures.swift */,
+				55C1BEAB21A9D5EE0074B14C /* TeamDetailViewController.swift */,
+				55C1BEAD21A9D5EE0074B14C /* TeamDetailViewModel.swift */,
+				55C1BEAE21A9D5EE0074B14C /* TeamDetailConfigurator.swift */,
+			);
+			path = TeamDetail;
 			sourceTree = "<group>";
 		};
 		B3AB12465220AC86A64B69D4 /* Frameworks */ = {
@@ -514,13 +554,21 @@
 				55C1BEA021A9BFB00074B14C /* TeamServicesAPI.swift in Sources */,
 				55C1BE9121A9B7110074B14C /* TeamListViewController.swift in Sources */,
 				55C1BEA621A9CB190074B14C /* ServerResponse.swift in Sources */,
+				55C1BEB721A9D5EE0074B14C /* TeamDetailConfigurator.swift in Sources */,
+				55C1BEC321A9DDB10074B14C /* BaseRouter.swift in Sources */,
 				55C1BE6121A9AAEC0074B14C /* InitialViewController.swift in Sources */,
 				55C1BE9721A9B7110074B14C /* TeamListConfigurator.swift in Sources */,
+				55C1BEC021A9DCF90074B14C /* TeamListRouter.swift in Sources */,
 				55C1BE6521A9AAEC0074B14C /* InitialViewModel.swift in Sources */,
 				55C1BE6721A9AAEC0074B14C /* InitialConfigurator.swift in Sources */,
+				55C1BEB121A9D5EE0074B14C /* TeamDetailViewController.swift in Sources */,
+				55C1BEBD21A9DCBD0074B14C /* UIViewController+Extension.swift in Sources */,
 				55C1BE5F21A9AAEC0074B14C /* Initial+Structures.swift in Sources */,
 				55C1BE8F21A9B7110074B14C /* TeamList+Structures.swift in Sources */,
+				55C1BEB521A9D5EE0074B14C /* TeamDetailViewModel.swift in Sources */,
 				55C1BE6D21A9ABD10074B14C /* InitialRouter.swift in Sources */,
+				55C1BEAF21A9D5EE0074B14C /* TeamDetail+Structures.swift in Sources */,
+				55C1BEBA21A9DC960074B14C /* Storyboard+Extension.swift in Sources */,
 				55C1BE8121A9B1570074B14C /* TeamListTableViewCell.swift in Sources */,
 				55C1BEA321A9C3310074B14C /* TeamServices.swift in Sources */,
 				55C1BE3221A99FC90074B14C /* AppDelegate.swift in Sources */,
@@ -537,13 +585,21 @@
 				55C1BEA121A9BFB00074B14C /* TeamServicesAPI.swift in Sources */,
 				55C1BE9221A9B7110074B14C /* TeamListViewController.swift in Sources */,
 				55C1BEA721A9CB190074B14C /* ServerResponse.swift in Sources */,
+				55C1BEB821A9D5EE0074B14C /* TeamDetailConfigurator.swift in Sources */,
+				55C1BEC421A9DDB10074B14C /* BaseRouter.swift in Sources */,
 				55C1BE6221A9AAEC0074B14C /* InitialViewController.swift in Sources */,
 				55C1BE9821A9B7110074B14C /* TeamListConfigurator.swift in Sources */,
+				55C1BEC121A9DCF90074B14C /* TeamListRouter.swift in Sources */,
 				55C1BE6621A9AAEC0074B14C /* InitialViewModel.swift in Sources */,
 				55C1BE6821A9AAEC0074B14C /* InitialConfigurator.swift in Sources */,
+				55C1BEB221A9D5EE0074B14C /* TeamDetailViewController.swift in Sources */,
+				55C1BEBE21A9DCBD0074B14C /* UIViewController+Extension.swift in Sources */,
 				55C1BE6021A9AAEC0074B14C /* Initial+Structures.swift in Sources */,
 				55C1BE9021A9B7110074B14C /* TeamList+Structures.swift in Sources */,
+				55C1BEB621A9D5EE0074B14C /* TeamDetailViewModel.swift in Sources */,
 				55C1BE6E21A9ABD10074B14C /* InitialRouter.swift in Sources */,
+				55C1BEB021A9D5EE0074B14C /* TeamDetail+Structures.swift in Sources */,
+				55C1BEBB21A9DC960074B14C /* Storyboard+Extension.swift in Sources */,
 				55C1BE8221A9B1570074B14C /* TeamListTableViewCell.swift in Sources */,
 				55C1BEA421A9C3310074B14C /* TeamServices.swift in Sources */,
 				55C1BE4721A99FCB0074B14C /* SportsAppTests.swift in Sources */,

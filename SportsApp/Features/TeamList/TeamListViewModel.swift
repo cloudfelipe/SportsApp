@@ -23,11 +23,13 @@ class TeamListViewModel: RxViewModelType, RxViewModelModuleType, TeamListViewOut
     
     // MARK: In/Out struct
     struct InputDependencies {
+        let router: TeamListRouterInput
         let teamServices: TeamServicesInput
     }
     
     struct Input {
         let appearState: Observable<ViewAppearState>
+        let teamDidSelectedAtIndex: Driver<IndexPath>
     }
     
     struct Output {
@@ -56,22 +58,6 @@ class TeamListViewModel: RxViewModelType, RxViewModelModuleType, TeamListViewOut
         self.dep = dependencies
         self.moduleInputData = moduleInputData
         
-        /*
-        //Samples teams
-        let team1 = Team()
-        team1.name = "Atletico Nacional"
-        team1.stadium = "Atanacio Girardot"
-        team1.badge = ""
-        
-        let team2 = Team()
-        team2.name = "Millonarios"
-        team2.stadium = "El Campin"
-        team2.badge = ""
-        
-        self.teams.accept([team1, team2])
-         */
-
-//        setImage(string: "https://cdn.applypixels.com/app/uploads/2016/04/template_android_icon.png")
         dependencies.teamServices.getTeams(by: "4335") { (list, error) in
             if error != nil {
                 print("Error getting teams: Reason \(error!.localizedDescription)")
@@ -84,16 +70,6 @@ class TeamListViewModel: RxViewModelType, RxViewModelModuleType, TeamListViewOut
         }
     }
     
-    private func setImage(string: String) {
-        Alamofire.request(URL(string: string)!, method: .get).response { response in
-            guard let image = UIImage(data:response.data!) else {
-                // Handle error
-                return
-            }
-            print("image!")
-        }
-    }
-    
     // MARK: - TeamListViewOutput
     
     func configure(input: Input) -> Output {
@@ -101,6 +77,11 @@ class TeamListViewModel: RxViewModelType, RxViewModelModuleType, TeamListViewOut
         input.appearState.subscribe(onNext: { _ in
             // .didLoad and etc
         }).disposed(by: bag)
+        
+        input.teamDidSelectedAtIndex
+            .drive(onNext: { [unowned self] (indexPath) in
+                self.showTeamDetailAt(index: indexPath)
+            }).disposed(by: bag)
         
         let teamWrappers = teams.map { self.prepareWrappers(for: $0) }.asObservable()
         // Configure output
@@ -137,5 +118,10 @@ extension TeamListViewModel {
                                       teamBadge: team.badge ?? "N/A")
             return wrapper
         }
+    }
+    
+    private func showTeamDetailAt(index: IndexPath) {
+        let team = self.teams.value[index.row]
+        self.dep.router.showTeam(team)
     }
 }

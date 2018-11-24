@@ -1,5 +1,5 @@
 //
-//  TeamListViewController.swift
+//  TeamDetailViewController.swift
 //  SportsApp
 //
 //  Created by Felipe Correa on 11/24/18.
@@ -9,30 +9,29 @@
 import UIKit
 import RxSwift
 import RxCocoa
-import SnapKit
 
-class TeamListViewController: UIViewController {
+class TeamDetailViewController: UIViewController {
     
     // MARK: - Properties
     
     // Dependencies
-    var viewModel: TeamListViewOutput?
+    var viewModel: TeamDetailViewOutput?
     
     // Public
     var bag = DisposeBag()
     
     // Private
     private let viewAppearState = PublishSubject<ViewAppearState>()
-    private lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: CGRect.zero, style: .plain)
-        tableView.register(TeamListTableViewCell.self, forCellReuseIdentifier: "Cell")
-        return tableView
-    }()
-    private lazy var searchButton: UIBarButtonItem = {
-        let button = UIBarButtonItem(barButtonSystemItem: .search, target: nil, action: nil)
-        return button
-    }()
+    
     // IBOutlet & UI
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var stadiumImageView: UIImageView!
+    @IBOutlet weak var stadiumNameLabel: UILabel!
+    @IBOutlet weak var jerseyImageView: UIImageView!
+    @IBOutlet weak var jerseyNameLabel: UILabel!
+    
+    @IBOutlet weak var nextEventsTableView: UITableView!
+    @IBOutlet weak var socialTableView: UITableView!
     
     // MARK: - View lifecycle
     
@@ -66,12 +65,11 @@ class TeamListViewController: UIViewController {
     // MARK: - Configuration
     private func configureRx() {
         guard let model = viewModel else {
-            assertionFailure("Please, set ViewModel as dependency for TeamList")
+            assertionFailure("Please, set ViewModel as dependency for TeamDetail")
             return
         }
         
-        let input = TeamListViewModel.Input(appearState: viewAppearState,
-                                            teamDidSelectedAtIndex: tableView.rx.itemSelected.asDriver())
+        let input = TeamDetailViewModel.Input(appearState: viewAppearState)
         let output = model.configure(input: input)
         
         output.title.subscribe(onNext: { [weak self] str in
@@ -81,31 +79,14 @@ class TeamListViewController: UIViewController {
         output.state.subscribe(onNext: { [weak self] state in
             // state handler
         }).disposed(by: bag)
-        
-        output.teamsWrapper
-            .bind(to: tableView.rx.items(cellIdentifier: "Cell", cellType: TeamListTableViewCell.self)) { (index, item, cell) in
-                cell.setupWith(model: item)
-            }
-            .disposed(by: bag)
     }
     
     private func configureUI() {
-        self.view.addSubview(tableView)
-        self.navigationItem.rightBarButtonItem = self.searchButton
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.prepareConstraints()
-    }
-    
-    /// Setup all constraints for all views
-    private func prepareConstraints() {
-        tableView.snp.makeConstraints { (maker) in
-            maker.edges.equalToSuperview()
-        }
     }
     
     // MARK: - Additional
     
     deinit {
-        print("TeamListViewController deinit")
+        print("TeamDetailViewController deinit")
     }
 }

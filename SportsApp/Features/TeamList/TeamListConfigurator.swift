@@ -14,9 +14,9 @@ class TeamListConfigurator {
         -> (viewController: UIViewController, moduleOutput: TeamListViewModel.ModuleOutput) {
             // View controller
             let viewController = createViewController()
-            
+            let router = TeamListRouter(viewController: viewController)
             // Dependencies
-            let dependencies = try createDependencies()
+            let dependencies = try createDependencies(router: router)
             
             // View model
             let viewModel = TeamListViewModel(dependencies: dependencies, moduleInputData: inputData)
@@ -31,9 +31,10 @@ class TeamListConfigurator {
         return TeamListViewController()
     }
     
-    private class func createDependencies() throws -> TeamListViewModel.InputDependencies {
+    private class func createDependencies(router: TeamListRouterInput) throws -> TeamListViewModel.InputDependencies {
         let teamServices = TeamServices()
-        let dependencies = TeamListViewModel.InputDependencies(teamServices: teamServices)
+        let dependencies = TeamListViewModel.InputDependencies(router: router,
+                                                               teamServices: teamServices)
         return dependencies
     }
     
