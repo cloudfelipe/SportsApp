@@ -23,6 +23,8 @@ def main_pods
 	pod 'TPKeyboardAvoiding'
 	pod 'SVProgressHUD'
 	pod "SnapKit"
+	pod 'DZNWebViewController'
+	pod 'TOWebViewController'
 end
 
 target 'SportsApp' do

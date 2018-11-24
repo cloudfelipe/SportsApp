@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import AlamofireImage
 
 class TeamDetailViewController: UIViewController {
     
@@ -69,19 +70,51 @@ class TeamDetailViewController: UIViewController {
             return
         }
         
-        let input = TeamDetailViewModel.Input(appearState: viewAppearState)
+        let input = TeamDetailViewModel.Input(appearState: viewAppearState,
+                                              socialNetworkDidSelectedAtIndex: socialTableView.rx.itemSelected.asDriver())
         let output = model.configure(input: input)
         
         output.title.subscribe(onNext: { [weak self] str in
             self?.navigationItem.title = str
         }).disposed(by: bag)
         
-        output.state.subscribe(onNext: { [weak self] state in
-            // state handler
-        }).disposed(by: bag)
+//        output.state.subscribe(onNext: { [weak self] state in
+//            // state handler
+//        }).disposed(by: bag)
+        
+        output.socialNetworks
+            .bind(to: socialTableView.rx.items(cellIdentifier: "Cell")) { (index, item, cell) in
+                cell.textLabel?.text = item.type.rawValue
+            }
+            .disposed(by: bag)
+        
+        output.viewInfo
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [unowned self] (viewInfo) in
+                self.updateViewInfo(with: viewInfo)
+            }).disposed(by: bag)
     }
     
     private func configureUI() {
+        descriptionLabel.numberOfLines = 3
+        descriptionLabel.textAlignment = .center
+        
+        socialTableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+    }
+    
+    private func updateViewInfo(with model: TeamDetailViewInfo?) {
+        
+        guard let model = model else { return }
+        
+        self.descriptionLabel.text = model.description
+        self.stadiumNameLabel.text = model.stadiumName
+        self.jerseyNameLabel.text = model.jerse
+        if let stadiumUrl = model.stadiumImageUrl, let url = URL(string: stadiumUrl) {
+            self.stadiumImageView.af_setImage(withURL: url)
+        }
+        if let jerseUrl = model.jerseImageUrl, let url = URL(string: jerseUrl) {
+            self.jerseyImageView.af_setImage(withURL: url)
+        }
     }
     
     // MARK: - Additional

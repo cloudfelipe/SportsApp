@@ -11,12 +11,12 @@ import RxSwift
 extension TeamDetailViewModel {
     
     enum OutputModuleActionType {
-        
+        case showWebpage(url: String)
     }
     
     // MARK: - initial module data
     struct ModuleInputData {
-        
+        let team: Team
     }
     
     // MARK: - module input structure
