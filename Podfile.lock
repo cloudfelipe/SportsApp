@@ -2,6 +2,7 @@ PODS:
   - Alamofire (4.7.3)
   - AlamofireImage (3.4.1):
     - Alamofire (~> 4.7)
+  - Differentiator (3.1.0)
   - DZNWebViewController (3.2)
   - Moya (11.0.2):
     - Moya/Core (= 11.0.2)
@@ -27,6 +28,10 @@ PODS:
     - RxSwift (~> 4.0)
   - RxCocoa (4.4.0):
     - RxSwift (~> 4.0)
+  - RxDataSources (3.1.0):
+    - Differentiator (~> 3.0)
+    - RxCocoa (~> 4.0)
+    - RxSwift (~> 4.0)
   - RxSwift (4.4.0):
     - RxAtomic (~> 4.4)
   - RxTest (4.4.0):
@@ -51,6 +56,7 @@ DEPENDENCIES:
   - Quick
   - RxBlocking (~> 4.0)
   - RxCocoa (~> 4.0)
+  - RxDataSources (~> 3.0)
   - RxSwift (~> 4.0)
   - RxTest (~> 4.0)
   - SnapKit
@@ -63,6 +69,7 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - AlamofireImage
+    - Differentiator
     - DZNWebViewController
     - Moya
     - Moya-ObjectMapper
@@ -73,6 +80,7 @@ SPEC REPOS:
     - RxAtomic
     - RxBlocking
     - RxCocoa
+    - RxDataSources
     - RxSwift
     - RxTest
     - SnapKit
@@ -84,6 +92,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
   AlamofireImage: 78d67ccbb763d87ba44b21583d2153500a195630
+  Differentiator: be49ca3408f0ecfc761e4c7763d20c62be01b9ad
   DZNWebViewController: 8e927a5de637fe0c4104c001d5cccd4fa5621e50
   Moya: a725035953bc1c0eb1be505ab903984501d82440
   Moya-ObjectMapper: 441caa307b527331fde59e2577adc632a16f1255
@@ -94,6 +103,7 @@ SPEC CHECKSUMS:
   RxAtomic: eacf60db868c96bfd63320e28619fe29c179656f
   RxBlocking: 138ad53217434444d6eeeb4fb406a45431d92e31
   RxCocoa: df63ebf7b9a70d6b4eeea407ed5dd4efc8979749
+  RxDataSources: a843bad90c29817f5923ec8163f4af2de084ceb3
   RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
   RxTest: 19d03286bdc0a3aaea5d61d4cde31fdf4bb8a5ba
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
@@ -102,6 +112,6 @@ SPEC CHECKSUMS:
   TOWebViewController: 953a24619d32f7aa1d9d4098a74885a9236f7348
   TPKeyboardAvoiding: cb69d5ddbe90ce0170e4bc2db1e5e41d4a3ad9a4
 
-PODFILE CHECKSUM: 708481b00eba892f1b5ef4a68b7e1971d3839602
+PODFILE CHECKSUM: 3f09ba1fd18d32f6b0443087dcefb7c0617b2f5e
 
 COCOAPODS: 1.5.3

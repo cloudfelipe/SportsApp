@@ -133,12 +133,10 @@ class TeamListViewController: UIViewController {
         }).disposed(by: bag)
 
         output.teamsWrapper
-            .bind(to: tableView.rx.items(cellIdentifier: "Cell", cellType: TeamListTableViewCell.self)) { (index, item, cell) in
+            .bind(to: tableView.rx.items(cellIdentifier: "Cell", cellType: TeamListTableViewCell.self)) { (_, item, cell) in
                 cell.setupWith(model: item)
             }
             .disposed(by: bag)
-        
-        
     }
     
     private func configureUI() {

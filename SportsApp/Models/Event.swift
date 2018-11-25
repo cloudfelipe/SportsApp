@@ -13,8 +13,8 @@ final class Event: Mappable {
     var eventId: String?
     var name: String?
     var competition: String?
-    var startDate: Date?
-    var startTime: Date?
+    var startDate: String?
+    var startTime: String?
     var thumUrl: String?
     
     init() {

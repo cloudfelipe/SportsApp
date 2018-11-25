@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import AlamofireImage
+import RxDataSources
 
 class TeamDetailViewController: UIViewController {
     
@@ -25,14 +26,14 @@ class TeamDetailViewController: UIViewController {
     private let viewAppearState = PublishSubject<ViewAppearState>()
     
     // IBOutlet & UI
-    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var foundedLabel: UILabel!
+    @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var stadiumImageView: UIImageView!
     @IBOutlet weak var stadiumNameLabel: UILabel!
     @IBOutlet weak var jerseyImageView: UIImageView!
     @IBOutlet weak var jerseyNameLabel: UILabel!
     
-    @IBOutlet weak var nextEventsTableView: BaseTableView!
-    @IBOutlet weak var socialTableView: UITableView!
+    @IBOutlet weak var footerInfoTableView: BaseTableView!
     
     // MARK: - View lifecycle
     
@@ -70,8 +71,10 @@ class TeamDetailViewController: UIViewController {
             return
         }
         
+        footerInfoTableView.rx.setDelegate(self).disposed(by: bag)
+        
         let input = TeamDetailViewModel.Input(appearState: viewAppearState,
-                                              socialNetworkDidSelectedAtIndex: socialTableView.rx.itemSelected.asDriver())
+                                              footerItemDidSelectedAtIndex: footerInfoTableView.rx.itemSelected.asDriver())
         let output = model.configure(input: input)
         
         output.title.subscribe(onNext: { [weak self] str in
@@ -81,22 +84,14 @@ class TeamDetailViewController: UIViewController {
         output.state.subscribe(onNext: { [unowned self] state in
             switch state {
             case .networkActivity:
-                self.nextEventsTableView.isLoadingContent = true
+                self.footerInfoTableView.isLoadingContent = true
             default:
-                self.nextEventsTableView.isLoadingContent = false
+                self.footerInfoTableView.isLoadingContent = false
             }
         }).disposed(by: bag)
         
-        output.socialNetworks
-            .bind(to: socialTableView.rx.items(cellIdentifier: "Cell")) { (index, item, cell) in
-                cell.textLabel?.text = item.type.rawValue
-            }
-            .disposed(by: bag)
-        
-        output.nextEvents
-            .bind(to: nextEventsTableView.rx.items(cellIdentifier: "Cell")) { (index, item, cell) in
-                cell.textLabel?.text = item.title
-            }
+        output.footerSections
+            .bind(to: footerInfoTableView.rx.items(dataSource: model.footerTablewDataSource()))
             .disposed(by: bag)
         
         output.viewInfo
@@ -107,20 +102,31 @@ class TeamDetailViewController: UIViewController {
     }
     
     private func configureUI() {
-        descriptionLabel.numberOfLines = 3
-        descriptionLabel.textAlignment = .center
-        
-        socialTableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-        nextEventsTableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        footerInfoTableView.register(TeamListTableViewCell.self, forCellReuseIdentifier: "Cell")
+        descriptionTextView.isEditable = false
+        descriptionTextView.isSelectable = false
+        foundedLabel.font = UIFont.systemFont(ofSize: 15.0)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        scrollToTop(textView: descriptionTextView)
+    }
+    //Litle hack that scrolls to a textview's top
+    public func scrollToTop(textView: UITextView) {
+        // swiftlint:disable next legacy_constructor
+        let range = NSMakeRange(0, 1)
+        textView.scrollRangeToVisible(range)
     }
     
     private func updateViewInfo(with model: TeamDetailViewInfo?) {
         
         guard let model = model else { return }
         
-        self.descriptionLabel.text = model.description
+        self.descriptionTextView.text = model.description
         self.stadiumNameLabel.text = model.stadiumName
         self.jerseyNameLabel.text = model.jerse
+        self.foundedLabel.text = model.founded
         if let stadiumUrl = model.stadiumImageUrl, let url = URL(string: stadiumUrl) {
             self.stadiumImageView.af_setImage(withURL: url)
         }
@@ -133,5 +139,11 @@ class TeamDetailViewController: UIViewController {
     
     deinit {
         print("TeamDetailViewController deinit")
+    }
+}
+
+extension TeamDetailViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

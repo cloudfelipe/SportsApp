@@ -9,9 +9,11 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import RxDataSources
 
 struct TeamDetailViewInfo {
     var name: String?
+    var founded: String?
     var description: String?
     var stadiumName: String?
     var stadiumImageUrl: String?
@@ -19,8 +21,15 @@ struct TeamDetailViewInfo {
     var jerseImageUrl: String?
 }
 
+struct FooterInfo {
+    let title: String
+    let detail: String
+    let moreInfo: Bool
+}
+
 protocol TeamDetailViewOutput {
     func configure(input: TeamDetailViewModel.Input) -> TeamDetailViewModel.Output
+    func footerTablewDataSource() -> RxTableViewSectionedReloadDataSource<SectionModel<String, FooterInfo>>
 }
 
 struct NextEvent {
@@ -30,6 +39,8 @@ struct NextEvent {
 
 class TeamDetailViewModel: RxViewModelType, RxViewModelModuleType, TeamDetailViewOutput {
     
+    typealias FooterSection = SectionModel<String, FooterInfo>
+    
     // MARK: In/Out struct
     struct InputDependencies {
         let teamServices: TeamServicesInput
@@ -37,15 +48,14 @@ class TeamDetailViewModel: RxViewModelType, RxViewModelModuleType, TeamDetailVie
     
     struct Input {
         let appearState: Observable<ViewAppearState>
-        let socialNetworkDidSelectedAtIndex: Driver<IndexPath>
+        let footerItemDidSelectedAtIndex: Driver<IndexPath>
     }
     
     struct Output {
-        let title: Observable<String>
+        let title: Observable<String?>
         let state: Observable<ModelState>
         let viewInfo: Observable<TeamDetailViewInfo?>
-        let nextEvents: Observable<[NextEvent]>
-        let socialNetworks: Observable<[SocialNetwork]>
+        let footerSections: Observable<[FooterSection]>
     }
     
     // MARK: Dependencies
@@ -59,8 +69,9 @@ class TeamDetailViewModel: RxViewModelType, RxViewModelModuleType, TeamDetailVie
     private let viewInfoUpdated = BehaviorRelay<TeamDetailViewInfo?>(value: nil)
     private let availableSocialNetworks = BehaviorRelay<[SocialNetwork]>(value: [])
     private let nextEvents = BehaviorRelay<[Event]>(value: [])
+    private let sections = BehaviorRelay<[FooterSection]>(value: [])
     // MARK: Observables
-    private let title = Observable.just("TeamDetail")
+    private let title = BehaviorRelay<String?>(value: nil)
     private let outputModuleAction = PublishSubject<OutputModuleActionType>()
     
     // MARK: - initializer
@@ -69,13 +80,14 @@ class TeamDetailViewModel: RxViewModelType, RxViewModelModuleType, TeamDetailVie
         self.dep = dependencies
         self.moduleInputData = moduleInputData
         self.prepareViewInfo(with: moduleInputData.team)
-        
-        guard let id = moduleInputData.team.teamId else { return }
+        self.title.accept(moduleInputData.team.name)
+        guard let teamId = moduleInputData.team.teamId else { return }
         
         //get events
-        dependencies.teamServices.getNextFiveEvents(of: id) { (events, error) in
+        dependencies.teamServices.getNextFiveEvents(of: teamId) { (events, _) in
             if events != nil {
                 self.nextEvents.accept(events!)
+                self.updateSections()
             }
         }
     }
@@ -88,9 +100,9 @@ class TeamDetailViewModel: RxViewModelType, RxViewModelModuleType, TeamDetailVie
             // .didLoad and etc
         }).disposed(by: bag)
         
-        input.socialNetworkDidSelectedAtIndex
+        input.footerItemDidSelectedAtIndex
             .drive(onNext: { [unowned self] (indexPath) in
-                self.openSocialNetworkAt(indexPath: indexPath)
+                self.footerItemDidSelectedAtIndex(indexPath: indexPath)
             }).disposed(by: bag)
         
         // Configure output
@@ -98,8 +110,7 @@ class TeamDetailViewModel: RxViewModelType, RxViewModelModuleType, TeamDetailVie
             title: title.asObservable(),
             state: modelState.state.asObservable(),
             viewInfo: viewInfoUpdated.asObservable(),
-            nextEvents: nextEvents.map { self.prepareNextEvents(with: $0) }.asObservable(),
-            socialNetworks: availableSocialNetworks.asObservable()
+            footerSections: sections.asObservable()
         )
     }
     
@@ -114,9 +125,14 @@ class TeamDetailViewModel: RxViewModelType, RxViewModelModuleType, TeamDetailVie
         )
     }
     
-    private func openSocialNetworkAt(indexPath: IndexPath) {
-        let socialNwk = availableSocialNetworks.value[indexPath.row]
-        self.outputModuleAction.onNext(.showWebpage(url: socialNwk.url))
+    private func footerItemDidSelectedAtIndex(indexPath: IndexPath) {
+        switch indexPath.section {
+        case 1: // Social Network did selected
+            let socialNwk = availableSocialNetworks.value[indexPath.row]
+            self.outputModuleAction.onNext(.showWebpage(url: socialNwk.url))
+        default:
+            break
+        }
     }
     
     // MARK: - Additional
@@ -129,6 +145,7 @@ class TeamDetailViewModel: RxViewModelType, RxViewModelModuleType, TeamDetailVie
 extension TeamDetailViewModel {
     private func prepareViewInfo(with team: Team) {
         let info = TeamDetailViewInfo(name: team.name,
+                                      founded: "Since: \(team.formedYear ?? "N/A")",
                                       description: team.teamDescriptionEN,
                                       stadiumName: team.stadium,
                                       stadiumImageUrl: team.stadiumThumb,
@@ -137,14 +154,61 @@ extension TeamDetailViewModel {
         self.viewInfoUpdated.accept(info)
         
         self.availableSocialNetworks.accept(team.socialNetworks)
+        updateSections()
     }
     
-    private func prepareNextEvents(with events: [Event]) -> [NextEvent] {
-        let wrapper = events.map { (event) -> NextEvent in
-            let nextEvent = NextEvent(title: event.name!,
-                                      matchDate: Date().string())
-            return nextEvent
+    private func prepareSocialNetworkSection(with list: [SocialNetwork]) -> [FooterInfo] {
+        let socialNetworks = list.map { (socialNetwork) -> FooterInfo in
+            let info = FooterInfo(title: socialNetwork.type.rawValue + ":",
+                                  detail: socialNetwork.url,
+                                  moreInfo: true )
+            return info
+        }
+        return socialNetworks
+    }
+    
+    private func prepareNextEvents(with events: [Event]) -> [FooterInfo] {
+       
+        let wrapper = events.map { (event) -> FooterInfo in
+            var date = "Date: "
+            if let startDate = event.startDate, let startTime = event.startTime {
+                date += startDate + ", " + startTime
+            } else {
+                date += "N/A"
+            }
+            let info = FooterInfo(title: event.name! + ":",
+                                  detail: date,
+                                  moreInfo: false )
+            return info
         }
         return wrapper
+    }
+    
+    private func updateSections() {
+        let events = self.prepareNextEvents(with: self.nextEvents.value)
+        let socialN = self.prepareSocialNetworkSection(with: self.availableSocialNetworks.value)
+        let section = FooterSection(model: "Next Five Events:", items: events)
+        let section2 = FooterSection(model: "Social Networks:", items: socialN)
+        self.sections.accept([section, section2])
+    }
+}
+
+extension TeamDetailViewModel {
+    private func tableViewDataSourceUI() -> TableViewSectionedDataSource<FooterSection>.ConfigureCell {
+        return { (dataSource, tableView, indexPath, item) -> UITableViewCell in
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+            cell.textLabel?.text = item.title
+            cell.detailTextLabel?.text = item.detail
+            cell.accessoryType = item.moreInfo ? .disclosureIndicator : .none
+            return cell
+        }
+    }
+    
+    func footerTablewDataSource() -> RxTableViewSectionedReloadDataSource<FooterSection> {
+        let dataSource = RxTableViewSectionedReloadDataSource<FooterSection>(configureCell: tableViewDataSourceUI())
+        dataSource.titleForHeaderInSection = { dataS, index in
+            return dataS.sectionModels[index].model
+        }
+        return dataSource
     }
 }

@@ -25,6 +25,7 @@ def main_pods
 	pod "SnapKit"
 	pod 'DZNWebViewController'
 	pod 'TOWebViewController'
+	pod 'RxDataSources', '~> 3.0'
 end
 
 target 'SportsApp' do
