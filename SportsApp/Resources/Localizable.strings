@@ -1,0 +1,14 @@
+/* 
+  Localizable.strings
+  SportsApp
+
+  Created by Felipe Correa on 11/24/18.
+  Copyright © 2018 Test CondorLabs LTD. All rights reserved.
+*/
+"TEAM_List_TITLE" = "Teams";
+
+"DETAIL_SINCE" = "Since:";
+"DETAIL_CURRENT_JERSEY" = "Current Jersey:";
+"DETAIL_DATE" = "Date:";
+"DETAIL_NEXT_FIVE_EVENTS" = "Next Five Events:";
+"DETAIL_SOCIAL_NETWORKS" = "Social Networks:";

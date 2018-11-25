@@ -17,8 +17,8 @@ struct TeamDetailViewInfo {
     var description: String?
     var stadiumName: String?
     var stadiumImageUrl: String?
-    var jerse: String?
-    var jerseImageUrl: String?
+    var jersey: String?
+    var jerseyImageUrl: String?
 }
 
 struct FooterInfo {
@@ -145,12 +145,12 @@ class TeamDetailViewModel: RxViewModelType, RxViewModelModuleType, TeamDetailVie
 extension TeamDetailViewModel {
     private func prepareViewInfo(with team: Team) {
         let info = TeamDetailViewInfo(name: team.name,
-                                      founded: "Since: \(team.formedYear ?? "N/A")",
+                                      founded: "\(NSLocalizedString("DETAIL_SINCE", comment: "")) \(team.formedYear ?? "N/A")",
                                       description: team.teamDescriptionEN,
                                       stadiumName: team.stadium,
                                       stadiumImageUrl: team.stadiumThumb,
-                                      jerse: "Current Jerse",
-                                      jerseImageUrl: team.jerse)
+                                      jersey: "\(NSLocalizedString("DETAIL_CURRENT_JERSEY", comment: ""))",
+                                      jerseyImageUrl: team.jerse)
         self.viewInfoUpdated.accept(info)
         
         self.availableSocialNetworks.accept(team.socialNetworks)
@@ -170,7 +170,7 @@ extension TeamDetailViewModel {
     private func prepareNextEvents(with events: [Event]) -> [FooterInfo] {
        
         let wrapper = events.map { (event) -> FooterInfo in
-            var date = "Date: "
+            var date = NSLocalizedString("DETAIL_DATE", comment: "") + " "
             if let startDate = event.startDate, let startTime = event.startTime {
                 date += startDate + ", " + startTime
             } else {
@@ -187,8 +187,8 @@ extension TeamDetailViewModel {
     private func updateSections() {
         let events = self.prepareNextEvents(with: self.nextEvents.value)
         let socialN = self.prepareSocialNetworkSection(with: self.availableSocialNetworks.value)
-        let section = FooterSection(model: "Next Five Events:", items: events)
-        let section2 = FooterSection(model: "Social Networks:", items: socialN)
+        let section = FooterSection(model: NSLocalizedString("DETAIL_NEXT_FIVE_EVENTS", comment: ""), items: events)
+        let section2 = FooterSection(model: NSLocalizedString("DETAIL_SOCIAL_NETWORKS", comment: ""), items: socialN)
         self.sections.accept([section, section2])
     }
 }

@@ -125,12 +125,12 @@ class TeamDetailViewController: UIViewController {
         
         self.descriptionTextView.text = model.description
         self.stadiumNameLabel.text = model.stadiumName
-        self.jerseyNameLabel.text = model.jerse
+        self.jerseyNameLabel.text = model.jersey
         self.foundedLabel.text = model.founded
         if let stadiumUrl = model.stadiumImageUrl, let url = URL(string: stadiumUrl) {
             self.stadiumImageView.af_setImage(withURL: url)
         }
-        if let jerseUrl = model.jerseImageUrl, let url = URL(string: jerseUrl) {
+        if let jerseUrl = model.jerseyImageUrl, let url = URL(string: jerseUrl) {
             self.jerseyImageView.af_setImage(withURL: url)
         }
     }

@@ -47,8 +47,9 @@ final class TeamListTableViewCell: UITableViewCell {
     func setupWith(model: TeamListTableViewCellModel) {
         self.textLabel?.text = model.teamName
         self.detailTextLabel?.text = model.teamStadium
-        //TODO: URL unwrapping
-        self.imageView?.af_setImage(withURL: URL(string: model.teamBadge)!,
-                                    placeholderImage: UIImage(named: "template_icon"))
+        if let url = URL(string: model.teamBadge) {
+            self.imageView?.af_setImage(withURL: url,
+                                        placeholderImage: UIImage(named: "soccer_icon"))
+        }
     }
 }

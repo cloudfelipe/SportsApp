@@ -48,7 +48,8 @@ class TeamListViewModel: RxViewModelType, RxViewModelModuleType, TeamListViewOut
     private let modelState: RxViewModelStateProtocol = RxViewModelState()
     
     // MARK: Observables
-    private let title = Observable.just("Teams")
+    private let title = Observable.just(NSLocalizedString("TEAM_List_TITLE",
+                                                          comment: "Ctrl Title"))
     private let outputModuleAction = PublishSubject<OutputModuleActionType>()
     
     private let teams = BehaviorRelay<[Team]>(value: [])
