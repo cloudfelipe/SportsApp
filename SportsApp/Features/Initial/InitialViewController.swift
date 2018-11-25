@@ -67,10 +67,6 @@ class InitialViewController: UIViewController {
         output.title.subscribe(onNext: { [weak self] str in
             self?.navigationItem.title = str
         }).disposed(by: bag)
-        
-        output.state.subscribe(onNext: { [weak self] state in
-            // state handler
-        }).disposed(by: bag)
     }
     
     private func configureUI() {

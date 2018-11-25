@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="btw-wT-5E3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -45,7 +45,6 @@
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="cjL-RF-JhN" secondAttribute="trailing" id="0qO-vH-0pg"/>
-                                                    <constraint firstItem="cjL-RF-JhN" firstAttribute="centerX" secondItem="g2S-wh-EAd" secondAttribute="centerX" id="Hei-h8-cmr"/>
                                                     <constraint firstItem="cjL-RF-JhN" firstAttribute="top" secondItem="GeC-i0-xHV" secondAttribute="bottom" constant="5" id="JKa-G5-gs7"/>
                                                     <constraint firstAttribute="trailing" secondItem="GeC-i0-xHV" secondAttribute="trailing" id="XG0-Wi-OYn"/>
                                                     <constraint firstItem="GeC-i0-xHV" firstAttribute="top" secondItem="g2S-wh-EAd" secondAttribute="top" id="lvl-Fm-zxG"/>
@@ -70,7 +69,6 @@
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="SuY-Ob-6bk" secondAttribute="trailing" id="055-Ow-ub1"/>
-                                                    <constraint firstItem="SuY-Ob-6bk" firstAttribute="centerX" secondItem="1MD-DG-cZO" secondAttribute="centerX" id="6Tm-Md-re1"/>
                                                     <constraint firstItem="Q7j-2d-Os3" firstAttribute="leading" secondItem="1MD-DG-cZO" secondAttribute="leading" id="9Pp-qi-hfK"/>
                                                     <constraint firstAttribute="trailing" secondItem="Q7j-2d-Os3" secondAttribute="trailing" id="MeD-VG-xtm"/>
                                                     <constraint firstItem="SuY-Ob-6bk" firstAttribute="leading" secondItem="1MD-DG-cZO" secondAttribute="leading" id="eJT-0Y-rH9"/>
@@ -142,6 +140,7 @@
         <!--Navigation Controller-->
         <scene sceneID="VFx-YJ-K1K">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="S4d-qY-KuN" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="btw-wT-5E3" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hb4-lR-mlc">
@@ -153,7 +152,6 @@
                         <segue destination="KTH-tP-lFN" kind="relationship" relationship="rootViewController" id="OaW-xV-WBn"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="S4d-qY-KuN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-10.4" y="154.27286356821591"/>
         </scene>

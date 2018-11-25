@@ -144,6 +144,7 @@ class TeamDetailViewModel: RxViewModelType, RxViewModelModuleType, TeamDetailVie
 
 extension TeamDetailViewModel {
     private func prepareViewInfo(with team: Team) {
+        //swiftlint:disable line_length
         let info = TeamDetailViewInfo(name: team.name,
                                       founded: "\(NSLocalizedString("DETAIL_SINCE", comment: "")) \(team.formedYear ?? "N/A")",
                                       description: team.teamDescriptionEN,

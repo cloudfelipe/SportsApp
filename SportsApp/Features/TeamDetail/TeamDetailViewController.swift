@@ -73,6 +73,7 @@ class TeamDetailViewController: UIViewController {
         
         footerInfoTableView.rx.setDelegate(self).disposed(by: bag)
         
+        //swiftlint:disable line_length
         let input = TeamDetailViewModel.Input(appearState: viewAppearState,
                                               footerItemDidSelectedAtIndex: footerInfoTableView.rx.itemSelected.asDriver())
         let output = model.configure(input: input)

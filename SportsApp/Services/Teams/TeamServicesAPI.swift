@@ -41,8 +41,8 @@ extension TeamServicesAPI: TargetType {
     
     public var task: Task {
         switch self {
-        case .teams(let id), .nextFiveEvents(let id):
-            return .requestParameters(parameters: ["id": id], encoding: URLEncoding.queryString)
+        case .teams(let objectId), .nextFiveEvents(let objectId):
+            return .requestParameters(parameters: ["id": objectId], encoding: URLEncoding.queryString)
         }
     }
     
