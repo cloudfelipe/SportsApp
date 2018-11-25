@@ -29,7 +29,7 @@ class InitialConfigurator {
     }
     
     private class func createViewController() -> InitialViewController {
-        return InitialViewController()
+        return InitialViewController.instantiate(fromAppStoryboard: .Main)
     }
     
     private class func createDependencies(router: InitialRouterInput) throws -> InitialViewModel.InputDependencies {
