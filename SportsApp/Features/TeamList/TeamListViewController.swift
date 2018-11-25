@@ -65,7 +65,11 @@ class TeamListViewController: UIViewController {
     let searchController = UISearchController(searchResultsController: nil)
     
     private lazy var segmentedControl: UISegmentedControl = {
-        let segment = UISegmentedControl(items: Leagues.allCases.map { $0.name } )
+        let segment = UISegmentedControl(items: Leagues.allCases.map { $0.name })
+        segment.setTitleTextAttributes([
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15.0),
+            NSAttributedString.Key.foregroundColor: UIColor.black
+            ], for: .normal)
         return segment
     }()
     
@@ -111,6 +115,7 @@ class TeamListViewController: UIViewController {
         
         tableView.rx.setDelegate(self).disposed(by: bag)
         
+        //swiftlint:disable line_length
         let input = TeamListViewModel.Input(appearState: viewAppearState,
                                             teamDidSelectedAtIndex: tableView.rx.itemSelected.asDriver(),
                                             segmentedItemSelectedAtIndex: segmentedControl.rx.selectedSegmentIndex.asDriver())
@@ -124,14 +129,19 @@ class TeamListViewController: UIViewController {
             switch state {
             case .networkActivity:
                 self.tableView.isLoadingContent = true
+                //Block segmentedControl while is loading content
+                self.segmentedControl.isUserInteractionEnabled = false
             case .error(let error):
                 SVProgressHUD.showError(withStatus: error.localizedDescription)
                 self.tableView.isLoadingContent = false
+                self.segmentedControl.isUserInteractionEnabled = true
             default:
                 self.tableView.isLoadingContent = false
+                self.segmentedControl.isUserInteractionEnabled = true
             }
         }).disposed(by: bag)
 
+        //swiftlint:disable line_length
         output.teamsWrapper
             .bind(to: tableView.rx.items(cellIdentifier: "Cell", cellType: TeamListTableViewCell.self)) { (_, item, cell) in
                 cell.setupWith(model: item)
@@ -154,14 +164,14 @@ class TeamListViewController: UIViewController {
             maker.leading.equalToSuperview()
             maker.top.equalToSuperview()
             maker.trailing.equalToSuperview()
-            maker.height.equalTo(50.0)
+            maker.height.equalTo(30.0)
         }
         
         tableView.snp.makeConstraints { (maker) in
             maker.leading.equalToSuperview()
             maker.bottom.equalToSuperview()
             maker.trailing.equalToSuperview()
-            maker.top.equalTo(segmentedControl.snp.bottom).offset(5.0)
+            maker.top.equalTo(segmentedControl.snp.bottom).offset(10.0)
         }
     }
     

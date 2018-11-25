@@ -48,7 +48,7 @@ class TeamListViewModel: RxViewModelType, RxViewModelModuleType, TeamListViewOut
     private let modelState: RxViewModelStateProtocol = RxViewModelState()
     
     // MARK: Observables
-    private let title = Observable.just("TeamList")
+    private let title = Observable.just("Teams")
     private let outputModuleAction = PublishSubject<OutputModuleActionType>()
     
     private let teams = BehaviorRelay<[Team]>(value: [])
@@ -58,8 +58,6 @@ class TeamListViewModel: RxViewModelType, RxViewModelModuleType, TeamListViewOut
     init(dependencies: InputDependencies, moduleInputData: ModuleInputData) {
         self.dep = dependencies
         self.moduleInputData = moduleInputData
-        
-        
     }
     
     // MARK: - TeamListViewOutput
