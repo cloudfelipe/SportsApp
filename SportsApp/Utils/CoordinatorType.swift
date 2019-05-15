@@ -14,4 +14,15 @@ protocol CoordinatorType: AnyObject {
     
     init (navigationController: UINavigationController)
     func start()
+    func present(_ viewCtrl: UIViewController)
+}
+
+extension CoordinatorType {
+    func present(_ viewCtrl: UIViewController) {
+        let navCtrl = UINavigationController(rootViewController: viewCtrl)
+        navCtrl.navigationBar.isTranslucent = false
+        self.navigationController.viewControllers.last?.present(navCtrl,
+                                                                animated: true,
+                                                                completion: nil)
+    }
 }

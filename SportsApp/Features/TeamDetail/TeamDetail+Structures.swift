@@ -21,7 +21,7 @@ extension TeamDetailViewModel {
     
     // MARK: - module input structure
     struct ModuleInput {
-        
+        let coordinator: TeamDetailCoordinatorType
     }
     
     // MARK: - module output structure

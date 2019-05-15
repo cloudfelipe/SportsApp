@@ -43,6 +43,7 @@ class TeamDetailViewModel: RxViewModelType, RxViewModelModuleType, TeamDetailVie
     
     // MARK: In/Out struct
     struct InputDependencies {
+        weak var coordinator: TeamDetailCoordinatorType?
         let teamServices: TeamServicesInput
     }
     
@@ -129,7 +130,7 @@ class TeamDetailViewModel: RxViewModelType, RxViewModelModuleType, TeamDetailVie
         switch indexPath.section {
         case 1: // Social Network did selected
             let socialNwk = availableSocialNetworks.value[indexPath.row]
-            self.outputModuleAction.onNext(.showWebpage(url: socialNwk.url))
+            self.dep.coordinator?.presentWebView(page: socialNwk.url)
         default:
             break
         }

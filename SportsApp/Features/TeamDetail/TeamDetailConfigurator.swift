@@ -16,7 +16,7 @@ class TeamDetailConfigurator {
             let viewController = createViewController()
             
             // Dependencies
-            let dependencies = try createDependencies()
+            let dependencies = try createDependencies(coordinator: moduleInput?.coordinator)
             
             // View model
             let viewModel = TeamDetailViewModel(dependencies: dependencies, moduleInputData: inputData)
@@ -31,9 +31,10 @@ class TeamDetailConfigurator {
         return TeamDetailViewController.instantiate(fromAppStoryboard: .Main)
     }
     
-    private class func createDependencies() throws -> TeamDetailViewModel.InputDependencies {
+    private class func createDependencies(coordinator: TeamDetailCoordinatorType?) throws -> TeamDetailViewModel.InputDependencies {
         let dependencies =
-            TeamDetailViewModel.InputDependencies(teamServices: TeamServices())
+            TeamDetailViewModel.InputDependencies(coordinator: coordinator,
+                                                  teamServices: TeamServices())
         return dependencies
     }
     
