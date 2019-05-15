@@ -23,7 +23,7 @@ class TeamListViewModel: RxViewModelType, RxViewModelModuleType, TeamListViewOut
     
     // MARK: In/Out struct
     struct InputDependencies {
-        let router: TeamListRouterInput
+        weak var coordinator: TeamListCoordinatorType?
         let teamServices: TeamServicesInput
     }
     
@@ -142,6 +142,6 @@ extension TeamListViewModel {
     
     private func showTeamDetailAt(index: IndexPath) {
         let team = self.teams.value[index.row]
-        self.dep.router.showTeam(team)
+        self.dep.coordinator?.showTeam(team)
     }
 }

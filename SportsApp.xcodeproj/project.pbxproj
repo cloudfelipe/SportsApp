@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		55984751228BC2A400A27065 /* MainCoordinators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55984750228BC2A400A27065 /* MainCoordinators.swift */; };
+		55984753228BC36300A27065 /* CoordinatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55984752228BC36300A27065 /* CoordinatorType.swift */; };
+		55984754228BC5FF00A27065 /* MainCoordinators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55984750228BC2A400A27065 /* MainCoordinators.swift */; };
+		55984755228BC60700A27065 /* CoordinatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55984752228BC36300A27065 /* CoordinatorType.swift */; };
+		55984757228BCC6700A27065 /* TeamListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55984756228BCC6700A27065 /* TeamListCoordinator.swift */; };
+		55984758228BCC6700A27065 /* TeamListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55984756228BCC6700A27065 /* TeamListCoordinator.swift */; };
 		55C1BE3221A99FC90074B14C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C1BE3121A99FC90074B14C /* AppDelegate.swift */; };
 		55C1BE3721A99FC90074B14C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55C1BE3521A99FC90074B14C /* Main.storyboard */; };
 		55C1BE3921A99FCB0074B14C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55C1BE3821A99FCB0074B14C /* Assets.xcassets */; };
@@ -85,6 +91,9 @@
 /* Begin PBXFileReference section */
 		1678103ACB4159771722A97F /* Pods-SportsAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SportsAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SportsAppTests/Pods-SportsAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		487EE54CDBB46D87F50EEB9F /* Pods_SportsApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SportsApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		55984750228BC2A400A27065 /* MainCoordinators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinators.swift; sourceTree = "<group>"; };
+		55984752228BC36300A27065 /* CoordinatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorType.swift; sourceTree = "<group>"; };
+		55984756228BCC6700A27065 /* TeamListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListCoordinator.swift; sourceTree = "<group>"; };
 		55C1BE2E21A99FC90074B14C /* SportsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SportsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55C1BE3121A99FC90074B14C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		55C1BE3621A99FC90074B14C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -213,6 +222,7 @@
 			children = (
 				55C1BE6921A9AB420074B14C /* RxViewModelPorotocol.swift */,
 				55C1BEC221A9DDB10074B14C /* BaseRouter.swift */,
+				55984752228BC36300A27065 /* CoordinatorType.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -271,6 +281,7 @@
 				55C1BE5B21A9AAEC0074B14C /* InitialViewController.swift */,
 				55C1BE5D21A9AAEC0074B14C /* InitialViewModel.swift */,
 				55C1BE5E21A9AAEC0074B14C /* InitialConfigurator.swift */,
+				55984750228BC2A400A27065 /* MainCoordinators.swift */,
 			);
 			path = Initial;
 			sourceTree = "<group>";
@@ -283,6 +294,7 @@
 				55C1BE8B21A9B7110074B14C /* TeamListViewController.swift */,
 				55C1BE8D21A9B7110074B14C /* TeamListViewModel.swift */,
 				55C1BE8E21A9B7110074B14C /* TeamListConfigurator.swift */,
+				55984756228BCC6700A27065 /* TeamListCoordinator.swift */,
 			);
 			path = TeamList;
 			sourceTree = "<group>";
@@ -574,6 +586,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55984753228BC36300A27065 /* CoordinatorType.swift in Sources */,
 				55C1BE6A21A9AB420074B14C /* RxViewModelPorotocol.swift in Sources */,
 				55C1BE9521A9B7110074B14C /* TeamListViewModel.swift in Sources */,
 				55C1BE9B21A9B87F0074B14C /* Team.swift in Sources */,
@@ -583,6 +596,7 @@
 				55C1BE9121A9B7110074B14C /* TeamListViewController.swift in Sources */,
 				55C1BEA621A9CB190074B14C /* ServerResponse.swift in Sources */,
 				55C1BEB721A9D5EE0074B14C /* TeamDetailConfigurator.swift in Sources */,
+				55984751228BC2A400A27065 /* MainCoordinators.swift in Sources */,
 				55C1BEC321A9DDB10074B14C /* BaseRouter.swift in Sources */,
 				55C1BE6121A9AAEC0074B14C /* InitialViewController.swift in Sources */,
 				55C1BE9721A9B7110074B14C /* TeamListConfigurator.swift in Sources */,
@@ -591,6 +605,7 @@
 				55C1BE6721A9AAEC0074B14C /* InitialConfigurator.swift in Sources */,
 				55C1BEB121A9D5EE0074B14C /* TeamDetailViewController.swift in Sources */,
 				55C1BEBD21A9DCBD0074B14C /* UIViewController+Extension.swift in Sources */,
+				55984757228BCC6700A27065 /* TeamListCoordinator.swift in Sources */,
 				55C1BE5F21A9AAEC0074B14C /* Initial+Structures.swift in Sources */,
 				55C1BE8F21A9B7110074B14C /* TeamList+Structures.swift in Sources */,
 				55C1BEB521A9D5EE0074B14C /* TeamDetailViewModel.swift in Sources */,
@@ -608,6 +623,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55984755228BC60700A27065 /* CoordinatorType.swift in Sources */,
 				55C1BE6B21A9AB420074B14C /* RxViewModelPorotocol.swift in Sources */,
 				55C1BE9621A9B7110074B14C /* TeamListViewModel.swift in Sources */,
 				55C1BE9C21A9B87F0074B14C /* Team.swift in Sources */,
@@ -617,6 +633,7 @@
 				55C1BE9221A9B7110074B14C /* TeamListViewController.swift in Sources */,
 				55C1BEA721A9CB190074B14C /* ServerResponse.swift in Sources */,
 				55C1BEB821A9D5EE0074B14C /* TeamDetailConfigurator.swift in Sources */,
+				55984754228BC5FF00A27065 /* MainCoordinators.swift in Sources */,
 				55C1BEC421A9DDB10074B14C /* BaseRouter.swift in Sources */,
 				55C1BE6221A9AAEC0074B14C /* InitialViewController.swift in Sources */,
 				55C1BE9821A9B7110074B14C /* TeamListConfigurator.swift in Sources */,
@@ -625,6 +642,7 @@
 				55C1BE6821A9AAEC0074B14C /* InitialConfigurator.swift in Sources */,
 				55C1BEB221A9D5EE0074B14C /* TeamDetailViewController.swift in Sources */,
 				55C1BEBE21A9DCBD0074B14C /* UIViewController+Extension.swift in Sources */,
+				55984758228BCC6700A27065 /* TeamListCoordinator.swift in Sources */,
 				55C1BE6021A9AAEC0074B14C /* Initial+Structures.swift in Sources */,
 				55C1BE9021A9B7110074B14C /* TeamList+Structures.swift in Sources */,
 				55C1BEB621A9D5EE0074B14C /* TeamDetailViewModel.swift in Sources */,

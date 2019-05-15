@@ -18,7 +18,7 @@ class InitialViewModel: RxViewModelType, RxViewModelModuleType, InitialViewOutpu
     
     // MARK: In/Out struct
     struct InputDependencies {
-        let initialRouter: InitialRouterInput
+        weak var mainCoordinator: MainCoordinatorType?
     }
     
     struct Input {
@@ -85,7 +85,7 @@ class InitialViewModel: RxViewModelType, RxViewModelModuleType, InitialViewOutpu
     /// This method shows the suitable controller according to some internal requirement
     /// For this app, only show the main sport list
     private func showSuitableController() {
-        self.dep.initialRouter.presentTeamList()
+        self.dep.mainCoordinator?.presentTeamList()
     }
     
     deinit {

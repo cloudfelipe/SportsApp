@@ -13,13 +13,16 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var mainCoordinator: MainCoordinatorType?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let initalConfig = InitialConfigurator.module(inputData: InitialViewModel.ModuleInputData())
+        let navCtrl = UINavigationController()
+        self.mainCoordinator = MainCoordinator(navigationController: navCtrl)
+        self.mainCoordinator?.start()
+//        let initalConfig = InitialConfigurator.module(inputData: InitialViewModel.ModuleInputData())
         window = UIWindow(frame: UIScreen.main.bounds)
-        let rootVC = initalConfig?.0
-        window?.rootViewController = rootVC
+//        let rootVC = initalConfig?.0
+        window?.rootViewController = navCtrl
         window?.makeKeyAndVisible()
         return true
     }

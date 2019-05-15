@@ -21,7 +21,7 @@ extension TeamListViewModel {
     
     // MARK: - module input structure
     struct ModuleInput {
-        
+        let coordinator: TeamListCoordinatorType
     }
     
     // MARK: - module output structure

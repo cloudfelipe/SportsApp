@@ -21,7 +21,7 @@ extension InitialViewModel {
     
     // MARK: - module input structure
     struct ModuleInput {
-        
+        let coordinator: MainCoordinatorType
     }
     
     // MARK: - module output structure

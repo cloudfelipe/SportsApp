@@ -14,10 +14,9 @@ class InitialConfigurator {
         -> (viewController: UIViewController, moduleOutput: InitialViewModel.ModuleOutput) {
             // View controller
             let viewController = createViewController()
-            let router = InitialRouter(viewController: viewController)
             
             // Dependencies
-            let dependencies = try createDependencies(router: router)
+            let dependencies = try createDependencies(coordinator: moduleInput?.coordinator)
             
             // View model
             let viewModel = InitialViewModel(dependencies: dependencies, moduleInputData: inputData)
@@ -32,9 +31,10 @@ class InitialConfigurator {
         return InitialViewController.instantiate(fromAppStoryboard: .Main)
     }
     
-    private class func createDependencies(router: InitialRouterInput) throws -> InitialViewModel.InputDependencies {
+    //swiftlint:disable line_length
+    private class func createDependencies(coordinator: MainCoordinatorType?) throws -> InitialViewModel.InputDependencies {
         let dependencies =
-            InitialViewModel.InputDependencies(initialRouter: router)
+            InitialViewModel.InputDependencies(mainCoordinator: coordinator)
         return dependencies
     }
     
