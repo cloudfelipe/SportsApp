@@ -8,6 +8,7 @@
 
 import UIKit
 import RxSwift
+import XCoordinator
 
 protocol InitialRouterInput {
     func presentTeamList()
@@ -15,7 +16,7 @@ protocol InitialRouterInput {
 
 class InitialRouter: BaseRouter, InitialRouterInput {
     func presentTeamList() {
-        let configurator = TeamListConfigurator.module(inputData: TeamListViewModel.ModuleInputData())
+        let configurator = TeamListConfigurator.module(inputData: TeamListViewModel.ModuleInputData(router: TeamListCoordinator().anyRouter))
         if let viewCtrl = configurator?.0 {
             self.present(viewController: viewCtrl, withNavigationCtrl: true)
         }

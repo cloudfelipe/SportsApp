@@ -44,6 +44,9 @@ PODS:
     - TOWebViewController/Core (= 2.2.8)
   - TOWebViewController/Core (2.2.8)
   - TPKeyboardAvoiding (1.3.2)
+  - XCoordinator (1.5.0):
+    - XCoordinator/Core (= 1.5.0)
+  - XCoordinator/Core (1.5.0)
 
 DEPENDENCIES:
   - Alamofire
@@ -64,6 +67,7 @@ DEPENDENCIES:
   - SwiftLint
   - TOWebViewController
   - TPKeyboardAvoiding
+  - XCoordinator (~> 1.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -88,6 +92,7 @@ SPEC REPOS:
     - SwiftLint
     - TOWebViewController
     - TPKeyboardAvoiding
+    - XCoordinator
 
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
@@ -111,7 +116,8 @@ SPEC CHECKSUMS:
   SwiftLint: 7f5f7de0da74a649b16616cb5246ae323489656e
   TOWebViewController: 953a24619d32f7aa1d9d4098a74885a9236f7348
   TPKeyboardAvoiding: cb69d5ddbe90ce0170e4bc2db1e5e41d4a3ad9a4
+  XCoordinator: 4cb9530e886ecb5ad8c448361c60950fe49451c2
 
-PODFILE CHECKSUM: 3f09ba1fd18d32f6b0443087dcefb7c0617b2f5e
+PODFILE CHECKSUM: 92328ed0e40e6595c727b107b6e61e1fa70d3210
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.6.1

@@ -17,7 +17,7 @@ protocol TeamServicesInput {
 }
 
 class TeamServices {
-    private let provider = MoyaProvider<TeamServicesAPI>(plugins: [NetworkLoggerPlugin(verbose: true)])
+    private let provider = MoyaProvider<TeamServicesAPI>(plugins: [NetworkLoggerPlugin(verbose: false)])
     private let disposeBag = DisposeBag()
 }
 

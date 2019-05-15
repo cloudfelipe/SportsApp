@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="btw-wT-5E3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="btw-wT-5E3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -140,7 +141,6 @@
         <!--Navigation Controller-->
         <scene sceneID="VFx-YJ-K1K">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="S4d-qY-KuN" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="btw-wT-5E3" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hb4-lR-mlc">
@@ -152,6 +152,7 @@
                         <segue destination="KTH-tP-lFN" kind="relationship" relationship="rootViewController" id="OaW-xV-WBn"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="S4d-qY-KuN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-10.4" y="154.27286356821591"/>
         </scene>
@@ -192,6 +193,34 @@ For Condor Labs 👏🏼</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gQp-ac-mY6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-10" y="877"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="Xx5-uW-xhF">
+            <objects>
+                <viewController storyboardIdentifier="LoginViewController" id="kf3-yC-o2o" customClass="LoginViewController" customModule="SportsApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ed0-fk-8kW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YQi-Or-3xX">
+                                <rect key="frame" x="168.5" y="318.5" width="38" height="30"/>
+                                <state key="normal" title="Login"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="YQi-Or-3xX" firstAttribute="centerX" secondItem="ed0-fk-8kW" secondAttribute="centerX" id="IFP-Wf-oNi"/>
+                            <constraint firstItem="YQi-Or-3xX" firstAttribute="centerY" secondItem="ed0-fk-8kW" secondAttribute="centerY" id="fBc-rp-2Cq"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ETQ-wH-yk9"/>
+                    </view>
+                    <connections>
+                        <outlet property="loginButton" destination="YQi-Or-3xX" id="Vf7-4s-0Lo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PvJ-LC-jBp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="930" y="885"/>
         </scene>
     </scenes>
 </document>

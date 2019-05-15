@@ -68,6 +68,16 @@
 		55C1BECD21AA105D0074B14C /* BaseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C1BECB21AA105C0074B14C /* BaseTableView.swift */; };
 		55C1BECF21AA2E310074B14C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55C1BECE21AA2E310074B14C /* Localizable.strings */; };
 		55C1BED021AA2E310074B14C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55C1BECE21AA2E310074B14C /* Localizable.strings */; };
+		86F2AF10228CA9AB00220D01 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F2AF0F228CA9AB00220D01 /* LoginViewController.swift */; };
+		86F2AF11228CA9AB00220D01 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F2AF0F228CA9AB00220D01 /* LoginViewController.swift */; };
+		86F2AF13228CAA0600220D01 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F2AF12228CAA0600220D01 /* LoginViewModel.swift */; };
+		86F2AF14228CAA0600220D01 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F2AF12228CAA0600220D01 /* LoginViewModel.swift */; };
+		86F2AF16228CAB7F00220D01 /* LoginConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F2AF15228CAB7F00220D01 /* LoginConfigurator.swift */; };
+		86F2AF17228CAB7F00220D01 /* LoginConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F2AF15228CAB7F00220D01 /* LoginConfigurator.swift */; };
+		86F2AF19228CACE200220D01 /* InitialCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F2AF18228CACE200220D01 /* InitialCoordinator.swift */; };
+		86F2AF1A228CACE200220D01 /* InitialCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F2AF18228CACE200220D01 /* InitialCoordinator.swift */; };
+		86F2AF1C228CB6A800220D01 /* TeamListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F2AF1B228CB6A800220D01 /* TeamListCoordinator.swift */; };
+		86F2AF1D228CB6A800220D01 /* TeamListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F2AF1B228CB6A800220D01 /* TeamListCoordinator.swift */; };
 		B314160567FD0733CED37EC0 /* Pods_SportsApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 487EE54CDBB46D87F50EEB9F /* Pods_SportsApp.framework */; };
 		CBC9A425456B831CFDB11339 /* Pods_SportsAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA5DB5E6635E13F48C8D4CF5 /* Pods_SportsAppTests.framework */; };
 /* End PBXBuildFile section */
@@ -123,6 +133,11 @@
 		55C1BEC821AA04FA0074B14C /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		55C1BECB21AA105C0074B14C /* BaseTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableView.swift; sourceTree = "<group>"; };
 		55C1BECE21AA2E310074B14C /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		86F2AF0F228CA9AB00220D01 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		86F2AF12228CAA0600220D01 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		86F2AF15228CAB7F00220D01 /* LoginConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginConfigurator.swift; sourceTree = "<group>"; };
+		86F2AF18228CACE200220D01 /* InitialCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialCoordinator.swift; sourceTree = "<group>"; };
+		86F2AF1B228CB6A800220D01 /* TeamListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListCoordinator.swift; sourceTree = "<group>"; };
 		A34D58DD751F1F52B2195606 /* Pods-SportsAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SportsAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SportsAppTests/Pods-SportsAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		BA5DB5E6635E13F48C8D4CF5 /* Pods_SportsAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SportsAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCCCA3601D095DACEBF4D56A /* Pods-SportsApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SportsApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-SportsApp/Pods-SportsApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -248,6 +263,7 @@
 		55C1BE5521A9A6A20074B14C /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				86F2AF0E228CA99300220D01 /* Login */,
 				55C1BEA921A9D5D30074B14C /* TeamDetail */,
 				55C1BE8921A9B6F90074B14C /* TeamList */,
 				55C1BE6F21A9ACA20074B14C /* Initial */,
@@ -271,6 +287,7 @@
 				55C1BE5B21A9AAEC0074B14C /* InitialViewController.swift */,
 				55C1BE5D21A9AAEC0074B14C /* InitialViewModel.swift */,
 				55C1BE5E21A9AAEC0074B14C /* InitialConfigurator.swift */,
+				86F2AF18228CACE200220D01 /* InitialCoordinator.swift */,
 			);
 			path = Initial;
 			sourceTree = "<group>";
@@ -283,6 +300,7 @@
 				55C1BE8B21A9B7110074B14C /* TeamListViewController.swift */,
 				55C1BE8D21A9B7110074B14C /* TeamListViewModel.swift */,
 				55C1BE8E21A9B7110074B14C /* TeamListConfigurator.swift */,
+				86F2AF1B228CB6A800220D01 /* TeamListCoordinator.swift */,
 			);
 			path = TeamList;
 			sourceTree = "<group>";
@@ -323,6 +341,16 @@
 				55C1BEAE21A9D5EE0074B14C /* TeamDetailConfigurator.swift */,
 			);
 			path = TeamDetail;
+			sourceTree = "<group>";
+		};
+		86F2AF0E228CA99300220D01 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				86F2AF0F228CA9AB00220D01 /* LoginViewController.swift */,
+				86F2AF12228CAA0600220D01 /* LoginViewModel.swift */,
+				86F2AF15228CAB7F00220D01 /* LoginConfigurator.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		B3AB12465220AC86A64B69D4 /* Frameworks */ = {
@@ -459,7 +487,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-SportsAppTests/Pods-SportsAppTests-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-SportsAppTests/Pods-SportsAppTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
@@ -480,7 +508,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SportsAppTests/Pods-SportsAppTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SportsAppTests/Pods-SportsAppTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		7CCF026E0055C34F468D005D /* [CP] Check Pods Manifest.lock */ = {
@@ -525,7 +553,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-SportsApp/Pods-SportsApp-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-SportsApp/Pods-SportsApp-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/DZNWebViewController/DZNWebViewController.framework",
@@ -542,6 +570,7 @@
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/TOWebViewController/TOWebViewController.framework",
 				"${BUILT_PRODUCTS_DIR}/TPKeyboardAvoiding/TPKeyboardAvoiding.framework",
+				"${BUILT_PRODUCTS_DIR}/XCoordinator/XCoordinator.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -561,10 +590,11 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TOWebViewController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TPKeyboardAvoiding.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XCoordinator.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SportsApp/Pods-SportsApp-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SportsApp/Pods-SportsApp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -574,6 +604,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86F2AF10228CA9AB00220D01 /* LoginViewController.swift in Sources */,
 				55C1BE6A21A9AB420074B14C /* RxViewModelPorotocol.swift in Sources */,
 				55C1BE9521A9B7110074B14C /* TeamListViewModel.swift in Sources */,
 				55C1BE9B21A9B87F0074B14C /* Team.swift in Sources */,
@@ -581,6 +612,7 @@
 				55C1BECC21AA105C0074B14C /* BaseTableView.swift in Sources */,
 				55C1BEA021A9BFB00074B14C /* TeamServicesAPI.swift in Sources */,
 				55C1BE9121A9B7110074B14C /* TeamListViewController.swift in Sources */,
+				86F2AF19228CACE200220D01 /* InitialCoordinator.swift in Sources */,
 				55C1BEA621A9CB190074B14C /* ServerResponse.swift in Sources */,
 				55C1BEB721A9D5EE0074B14C /* TeamDetailConfigurator.swift in Sources */,
 				55C1BEC321A9DDB10074B14C /* BaseRouter.swift in Sources */,
@@ -591,12 +623,15 @@
 				55C1BE6721A9AAEC0074B14C /* InitialConfigurator.swift in Sources */,
 				55C1BEB121A9D5EE0074B14C /* TeamDetailViewController.swift in Sources */,
 				55C1BEBD21A9DCBD0074B14C /* UIViewController+Extension.swift in Sources */,
+				86F2AF16228CAB7F00220D01 /* LoginConfigurator.swift in Sources */,
 				55C1BE5F21A9AAEC0074B14C /* Initial+Structures.swift in Sources */,
 				55C1BE8F21A9B7110074B14C /* TeamList+Structures.swift in Sources */,
 				55C1BEB521A9D5EE0074B14C /* TeamDetailViewModel.swift in Sources */,
+				86F2AF13228CAA0600220D01 /* LoginViewModel.swift in Sources */,
 				55C1BE6D21A9ABD10074B14C /* InitialRouter.swift in Sources */,
 				55C1BEAF21A9D5EE0074B14C /* TeamDetail+Structures.swift in Sources */,
 				55C1BEBA21A9DC960074B14C /* Storyboard+Extension.swift in Sources */,
+				86F2AF1C228CB6A800220D01 /* TeamListCoordinator.swift in Sources */,
 				55C1BE8121A9B1570074B14C /* TeamListTableViewCell.swift in Sources */,
 				55C1BEA321A9C3310074B14C /* TeamServices.swift in Sources */,
 				55C1BE3221A99FC90074B14C /* AppDelegate.swift in Sources */,
@@ -608,6 +643,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86F2AF11228CA9AB00220D01 /* LoginViewController.swift in Sources */,
 				55C1BE6B21A9AB420074B14C /* RxViewModelPorotocol.swift in Sources */,
 				55C1BE9621A9B7110074B14C /* TeamListViewModel.swift in Sources */,
 				55C1BE9C21A9B87F0074B14C /* Team.swift in Sources */,
@@ -615,6 +651,7 @@
 				55C1BECD21AA105D0074B14C /* BaseTableView.swift in Sources */,
 				55C1BEA121A9BFB00074B14C /* TeamServicesAPI.swift in Sources */,
 				55C1BE9221A9B7110074B14C /* TeamListViewController.swift in Sources */,
+				86F2AF1A228CACE200220D01 /* InitialCoordinator.swift in Sources */,
 				55C1BEA721A9CB190074B14C /* ServerResponse.swift in Sources */,
 				55C1BEB821A9D5EE0074B14C /* TeamDetailConfigurator.swift in Sources */,
 				55C1BEC421A9DDB10074B14C /* BaseRouter.swift in Sources */,
@@ -625,12 +662,15 @@
 				55C1BE6821A9AAEC0074B14C /* InitialConfigurator.swift in Sources */,
 				55C1BEB221A9D5EE0074B14C /* TeamDetailViewController.swift in Sources */,
 				55C1BEBE21A9DCBD0074B14C /* UIViewController+Extension.swift in Sources */,
+				86F2AF17228CAB7F00220D01 /* LoginConfigurator.swift in Sources */,
 				55C1BE6021A9AAEC0074B14C /* Initial+Structures.swift in Sources */,
 				55C1BE9021A9B7110074B14C /* TeamList+Structures.swift in Sources */,
 				55C1BEB621A9D5EE0074B14C /* TeamDetailViewModel.swift in Sources */,
+				86F2AF14228CAA0600220D01 /* LoginViewModel.swift in Sources */,
 				55C1BE6E21A9ABD10074B14C /* InitialRouter.swift in Sources */,
 				55C1BEB021A9D5EE0074B14C /* TeamDetail+Structures.swift in Sources */,
 				55C1BEBB21A9DC960074B14C /* Storyboard+Extension.swift in Sources */,
+				86F2AF1D228CB6A800220D01 /* TeamListCoordinator.swift in Sources */,
 				55C1BE8221A9B1570074B14C /* TeamListTableViewCell.swift in Sources */,
 				55C1BEA421A9C3310074B14C /* TeamServices.swift in Sources */,
 				55C1BE4721A99FCB0074B14C /* SportsAppTests.swift in Sources */,

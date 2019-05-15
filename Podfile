@@ -26,6 +26,7 @@ def main_pods
 	pod 'DZNWebViewController'
 	pod 'TOWebViewController'
 	pod 'RxDataSources', '~> 3.0'
+	pod 'XCoordinator', '~> 1.0'
 end
 
 target 'SportsApp' do

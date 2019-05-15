@@ -13,14 +13,16 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    let router = IntialCoordinator().anyRouter
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let initalConfig = InitialConfigurator.module(inputData: InitialViewModel.ModuleInputData())
+//        let initalConfig = InitialConfigurator.module(inputData: InitialViewModel.ModuleInputData())
+//        window = UIWindow(frame: UIScreen.main.bounds)
+//        let rootVC = initalConfig?.0
+//        window?.rootViewController = rootVC
+//        window?.makeKeyAndVisible()
         window = UIWindow(frame: UIScreen.main.bounds)
-        let rootVC = initalConfig?.0
-        window?.rootViewController = rootVC
-        window?.makeKeyAndVisible()
+        router.setRoot(for: window!)
         return true
     }
 

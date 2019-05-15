@@ -17,7 +17,10 @@ protocol TeamListRouterInput {
 
 class TeamListRouter: BaseRouter, TeamListRouterInput {
     func showTeam(_ team: Team) {
-        let configurator = TeamDetailConfigurator.module(inputData: TeamDetailViewModel.ModuleInputData(team: team))
+        let output: (TeamDetailViewModel.OutputModuleActionType) -> Void = { _ in
+        }
+        let configurator = TeamDetailConfigurator.module(inputData: TeamDetailViewModel.ModuleInputData(team: team,
+                                                                                                        router: TeamListCoordinator().anyRouter, action: output))
         
         //Subscribe to detailCtrl's action responses
         configurator?.1.moduleAction

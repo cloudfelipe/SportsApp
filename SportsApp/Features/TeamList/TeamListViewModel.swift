@@ -142,6 +142,6 @@ extension TeamListViewModel {
     
     private func showTeamDetailAt(index: IndexPath) {
         let team = self.teams.value[index.row]
-        self.dep.router.showTeam(team)
+        self.moduleInputData.router.trigger(.teamDetail(team))
     }
 }

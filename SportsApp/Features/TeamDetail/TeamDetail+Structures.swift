@@ -7,6 +7,7 @@
 
 import Foundation
 import RxSwift
+import XCoordinator
 
 extension TeamDetailViewModel {
     
@@ -17,11 +18,12 @@ extension TeamDetailViewModel {
     // MARK: - initial module data
     struct ModuleInputData {
         let team: Team
+        let router: AnyRouter<HomeRoute>
+        let action: ((OutputModuleActionType) -> Void)
     }
     
     // MARK: - module input structure
     struct ModuleInput {
-        
     }
     
     // MARK: - module output structure

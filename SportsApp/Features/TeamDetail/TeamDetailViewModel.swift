@@ -129,7 +129,7 @@ class TeamDetailViewModel: RxViewModelType, RxViewModelModuleType, TeamDetailVie
         switch indexPath.section {
         case 1: // Social Network did selected
             let socialNwk = availableSocialNetworks.value[indexPath.row]
-            self.outputModuleAction.onNext(.showWebpage(url: socialNwk.url))
+            self.moduleInputData.action(.showWebpage(url: socialNwk.url))
         default:
             break
         }
